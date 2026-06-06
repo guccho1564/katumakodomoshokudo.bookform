@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katuma OBG 食堂 ~こども食堂~</title>
+    <title>みんなの笑顔子ども食堂 ＆ お楽しみイベント</title>
     <style>
         /* ==========================================
            1. 基本設定・共通スタイル
@@ -164,7 +164,7 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
-            flex: 1; /* スマホでボタンが押しやすくなるように幅を広げる */
+            flex: 1;
             min-width: 120px;
         }
         .select-group label {
@@ -178,8 +178,47 @@
             border: 2px solid #ddd;
             background-color: #fff;
             cursor: pointer;
-            width: 100%; /* セレクトボックスを要素いっぱいに広げる */
+            width: 100%;
             text-align: center;
+        }
+
+        /* ★新規：イベント選択ボックス */
+        .event-option-box {
+            background-color: #e3f2fd;
+            border: 2px solid #bbdefb;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .event-option-box p {
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .radio-label {
+            background: #ffffff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 2px solid #90caf9;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+            transition: all 0.2s;
+        }
+        .radio-label:hover {
+            background: #e3f2fd;
+        }
+        .radio-label input[type="radio"] {
+            margin-right: 8px;
+            transform: scale(1.2);
         }
 
         .reserve-btn {
@@ -195,20 +234,29 @@
             transition: all 0.3s;
             width: 100%;
             max-width: 400px;
-            margin-top: 10px;
         }
         .reserve-btn:hover {
             background-color: #d35400;
             transform: translateY(-2px);
         }
         
-        /* 整理券（チケット風デザイン） */
+        /* ==========================================
+           整理券デザイン（食堂用・イベント用）
+           ========================================== */
+        .tickets-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        /* 食堂用チケット */
         .ticket-container {
             background: #ffffff;
             border: 3px dashed #d35400;
             border-radius: 15px;
             padding: 30px;
-            margin: 20px auto 0;
+            width: 100%;
             max-width: 450px;
             position: relative;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
@@ -239,9 +287,8 @@
             letter-spacing: 1px;
             line-height: 1.3;
         }
-        .ticket-number span {
-            color: #d35400;
-        }
+        .ticket-number span { color: #d35400; }
+        
         .ticket-notice {
             font-size: 0.9rem;
             color: #c0392b;
@@ -250,6 +297,21 @@
             border-radius: 6px;
             font-weight: bold;
             margin-top: 15px;
+        }
+
+        /* イベント用チケット（青色ベース） */
+        .event-ticket {
+            border-color: #2980b9;
+        }
+        .event-ticket .ticket-header { color: #2980b9; }
+        .event-ticket .ticket-details {
+            background: #eaf2f8;
+            color: #2980b9;
+        }
+        .event-ticket .ticket-number span { color: #2980b9; }
+        .event-ticket .ticket-notice {
+            color: #1f618d;
+            background: #eaf2f8;
         }
         
         .cancel-btn {
@@ -261,7 +323,7 @@
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
-            margin-top: 25px;
+            margin-top: 15px;
             transition: all 0.3s;
         }
         .cancel-btn:hover {
@@ -281,9 +343,7 @@
             font-size: 1.2rem;
         }
 
-        /* ==========================================
-           5. 開催履歴・その他
-           ========================================== */
+        /* 開催履歴 */
         .info-list {
             margin: 20px auto 0;
             list-style-type: none;
@@ -325,22 +385,16 @@
         }
 
         /* ==========================================
-           6. ★スマートフォン向けレイアウト調整（追加）
+           5. スマートフォン向けレイアウト調整
            ========================================== */
         @media screen and (max-width: 768px) {
-            /* 画面サイズが768px（スマホや小さめのタブレット）以下の場合に適用されるルール */
-            
-            .container {
-                padding: 30px 15px; /* スマホでは左右の余白を少し狭くして画面を広く使う */
-            }
+            .container { padding: 30px 15px; }
             .header-container {
-                flex-direction: column; /* ヘッダーのロゴとメニューを縦並びに */
+                flex-direction: column;
                 gap: 15px;
                 padding: 15px;
             }
-            header h1 {
-                font-size: 1.2rem;
-            }
+            header h1 { font-size: 1.2rem; }
             header nav ul {
                 gap: 15px;
                 flex-wrap: wrap;
@@ -348,34 +402,23 @@
             }
             .hero {
                 height: auto;
-                padding: 60px 15px; /* 高さを自動にして、文字数に合わせて伸縮させる */
+                padding: 60px 15px;
             }
-            .hero-content h2 {
-                font-size: 1.4rem;
-            }
-            .counter-box {
-                padding: 15px;
-            }
-            .status-title {
-                font-size: 1.1rem;
-            }
+            .hero-content h2 { font-size: 1.4rem; }
+            .counter-box { padding: 15px; }
+            .status-title { font-size: 1.1rem; }
             .select-form-container {
                 gap: 15px;
                 padding: 15px;
             }
+            .radio-group { flex-direction: column; gap: 10px; }
             .reserve-btn {
                 font-size: 1.1rem;
                 padding: 15px 20px;
             }
-            .ticket-container {
-                padding: 20px 15px;
-            }
-            .ticket-number {
-                font-size: 1.8rem; /* 整理券番号の改行崩れを防ぐため少し小さく */
-            }
-            .history-grid {
-                grid-template-columns: 1fr; /* 開催履歴の写真を1列の縦並びにする */
-            }
+            .ticket-container { padding: 20px 15px; }
+            .ticket-number { font-size: 1.8rem; }
+            .history-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -383,10 +426,10 @@
 
     <header>
         <div class="header-container">
-            <h1>🍙 Katuma OBG食堂　〜こども食堂〜</h1>
+            <h1>🍙 みんなの笑顔子ども食堂</h1>
             <nav>
                 <ul>
-                    <li><a href="#about">概要</a></li>
+                    <li><a href="#about">紹介</a></li>
                     <li><a href="#reserve">整理券取得</a></li>
                     <li><a href="#history">開催履歴</a></li>
                 </ul>
@@ -397,21 +440,19 @@
     <section class="hero">
         <div class="hero-content">
             <h2>みんなで食べると、もっと美味しい！</h2>
-            <p>あたたかくて 美味しい ご飯が待っているよ。</p>
-            <p>人数を選んで整理券をもらってね！</p>
+            <p>あたたかいご飯とお友達が待っているよ。人数を選んで整理券をもらってね！</p>
         </div>
     </section>
 
     <!-- 紹介セクション -->
     <section id="about" class="container">
-        <h2 class="section-title">子ども食堂について</h2>
+        <h2 class="section-title">子ども食堂 ＆ イベントについて</h2>
         <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <p>地域の子どもたちやご家族が安心して美味しく過ごせる居場所です。事前登録や名前の入力は不要です！</p>
+            <p>地域の子どもたちやご家族が安心して美味しく過ごせる居場所です。食後には楽しいイベントも開催しています！</p>
             <ul class="info-list">
-                <li><strong>開催日時</strong> 2ヶ月/回 土 or 日曜日 11:00〜15:00</li>
-                <li><strong>開催場所</strong> 熊毛勤労者総合福祉センター（サンウィング熊毛） 1階 和室</li>
-                <li><strong>住所</strong> 山口県周南市中村10803-2</li>
-                <li><strong>参加費</strong> 子ども：無料 / 大人：200円</li>
+                <li><strong>開催日時</strong> 毎月 第2・第4土曜日 12:00〜14:00</li>
+                <li><strong>開催場所</strong> 地域コミュニティセンター 1階 和室</li>
+                <li><strong>参加費</strong> 子ども：無料 / 大人：300円</li>
             </ul>
         </div>
     </section>
@@ -419,18 +460,18 @@
     <!-- 予約（整理券発行）セクション -->
     <section id="reserve" class="bg-white">
         <div class="container">
-            <h2 class="section-title">次回(2026/6/26(日))の参加予約（整理券発行）</h2>
+            <h2 class="section-title">次回の参加予約（整理券発行）</h2>
             
             <div class="counter-box" id="counterBox">
                 <div class="status-title">
-                    現在の受付状況：<span id="statusBadge" class="status-badge">確認中...</span>
+                    現在の食堂受付状況：<span id="statusBadge" class="status-badge">確認中...</span>
                 </div>
                 <div class="count-alert" id="countAlert" style="display: none;">
                     残りあと <span id="remainingCount">0</span> 人分！お早めに！
                 </div>
             </div>
 
-            <!-- アクションエリア -->
+            <!-- アクションエリア（入力フォーム） -->
             <div class="action-wrapper" id="actionWrapper">
                 <div class="select-form-container">
                     <div class="select-group">
@@ -441,6 +482,7 @@
                             <option value="2">2名</option>
                             <option value="3">3名</option>
                             <option value="4">4名</option>
+                            <option value="5">5名</option>
                         </select>
                     </div>
                     <div class="select-group">
@@ -452,29 +494,56 @@
                             <option value="3">3名</option>
                             <option value="4">4名</option>
                             <option value="5">5名</option>
-                            <option value="6">6名</option>
-                            <option value="7">7名</option>
-                            <option value="8">8名</option>
                         </select>
                     </div>
                 </div>
-                <p style="margin-bottom: 15px; font-weight: bold; color: #555;">人数を選択してボタンを押すと、整理券が一括発行されます。</p>
+
+                <!-- ★イベント参加の選択 -->
+                <div class="event-option-box">
+                    <p>✨ 食後の「お楽しみイベント」にも参加しますか？</p>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="eventJoin" value="yes" checked> 参加する！
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="eventJoin" value="no"> 今回は食堂のみ
+                        </label>
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 15px; font-weight: bold; color: #555;">内容を確認してボタンを押すと、整理券が発行されます。</p>
                 <button class="reserve-btn" id="issueBtn" onclick="issueFamilyTicket()">整理券を発行する</button>
             </div>
 
-            <!-- 整理券表示エリア -->
-            <div class="action-wrapper" id="ticketWrapper" style="display: none;">
-                <div class="ticket-container">
-                    <div class="ticket-header">🍙 みんなの笑顔子ども食堂 参加整理券</div>
-                    <div class="ticket-details" id="ticketDetails">大人 1名 / 子ども 2名</div>
-                    <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">あなたのご予約番号</p>
-                    <div class="ticket-number" id="ticketNo">No.000</div>
-                    <div class="ticket-notice">
-                        ⚠️ 画面を消さないようにスクリーンショットを撮って、当日受付で見せてね！
-                        　 ※この整理券を見せることが予約の証明となります。
+            <!-- 整理券表示エリア（複数チケット対応） -->
+            <div id="ticketsDisplayArea" style="display: none; text-align: center;">
+                <div class="tickets-wrapper">
+                    
+                    <!-- 食堂のチケット -->
+                    <div class="ticket-container">
+                        <div class="ticket-header">🍙 みんなの笑顔子ども食堂 参加整理券</div>
+                        <div class="ticket-details" id="ticketDetails">大人 1名 / 子ども 2名</div>
+                        <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">食堂のご予約番号</p>
+                        <div class="ticket-number" id="ticketNo">No.000</div>
+                        <div class="ticket-notice">
+                            ⚠️ 画面をスクリーンショットするか、メモをして受付で見せてね！
+                        </div>
                     </div>
-                    <button class="cancel-btn" onclick="cancelTicket()">この予約をキャンセルする</button>
+
+                    <!-- イベントのチケット（参加する場合のみ表示） -->
+                    <div class="ticket-container event-ticket" id="eventTicketContainer" style="display: none;">
+                        <div class="ticket-header">🎈 お楽しみイベント 参加整理券</div>
+                        <div class="ticket-details" id="eventTicketDetails">大人 1名 / 子ども 2名</div>
+                        <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">イベント整理番号</p>
+                        <div class="ticket-number" id="eventTicketNo"><span>E-000</span></div>
+                        <div class="ticket-notice">
+                            イベント会場の入り口でこちらの番号をご提示ください。
+                        </div>
+                    </div>
+                    
                 </div>
+                
+                <button class="cancel-btn" onclick="cancelTicket()">すべての予約をキャンセルする</button>
             </div>
 
             <!-- 満員時のメッセージ -->
@@ -494,7 +563,7 @@
             <div class="history-card">
                 <div class="history-img" style="background-image: url('https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80');"></div>
                 <div class="history-content">
-                    <h3>2026年5月：春の地元野菜カレーライス</h3>
+                    <h3>2026年4月：春の地元野菜カレーライス</h3>
                     <p>山口県産の無農薬野菜をたっぷり使ったカレーです。みんなでワイワイ美味しく食べました！</p>
                 </div>
             </div>
@@ -505,13 +574,6 @@
                     <p>体に優しいオーガニック食材を取り入れ、栄養バランスを考えた和食定食を楽しみました。</p>
                 </div>
             </div>
-            <div class="history-card">
-                <div class="history-img" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80');"></div>
-                <div class="history-content">
-                    <h3>2025年12月：クリスマス特別ランチ</h3>
-                    <p>デザートに手作りのヘルシーケーキもついて、笑顔あふれる時間になりました。</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -520,22 +582,17 @@
     </footer>
 
     <!-- ==========================================
-       9. リアルタイム連動（スプレッドシート連携）対応ロジック
+       リアルタイム連動対応ロジック
        ========================================== -->
     <script>
-        // =======================================================
-        // 【管理者設定エリア】
-        // =======================================================
         // ★Step3でコピーした「ウェブアプリのURL」を下の " " の中に貼り付けてください！
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbyPp7y_GuubrnLNFYM_Nd_8g_wmcDE0geYY_jXSYrKySG05XpkjPhZr8kxGxXZeJTiL/exec";
+        const GAS_URL = "ここにコピーしたURLを貼り付けます";
         
         const MAX_CAPACITY = 300; 
-        const EVENT_ID = "event_2026_06"; // 開催ごとに書き換えるとリセットされます
+        const EVENT_ID = "event_2026_06_with_event"; 
         const STORAGE_KEY = 'shokudo_ticket_' + EVENT_ID;
 
-        // =======================================================
         // サーバー（スプレッドシート）と通信する機能
-        // =======================================================
         async function fetchCurrentCount() {
             try {
                 const response = await fetch(GAS_URL);
@@ -558,22 +615,18 @@
             }
         }
 
-        // =======================================================
         // 画面の動作ロジック
-        // =======================================================
         async function initPage() {
             const currentCount = await fetchCurrentCount();
-            
             if (currentCount === null) {
                 alert("データの読み込みに失敗しました。少し待ってから画面を再読み込みしてください。");
                 return;
             }
 
             const savedTicketData = localStorage.getItem(STORAGE_KEY);
-            
             if (savedTicketData) {
                 const info = JSON.parse(savedTicketData);
-                showMyTicket(info.adults, info.children, info.startNo, info.endNo);
+                showMyTicket(info.adults, info.children, info.startNo, info.endNo, info.eventJoin);
                 updateCounterDisplay(currentCount);
                 
                 setInterval(async () => {
@@ -582,7 +635,6 @@
                 }, 15000); 
                 return;
             }
-
             updateCounterDisplay(currentCount);
         }
 
@@ -630,6 +682,9 @@
             const adults = Number(document.getElementById('adultSelect').value);
             const children = Number(document.getElementById('childSelect').value);
             const totalRequested = adults + children;
+            
+            // ★イベント参加可否のラジオボタンの値を取得
+            const eventJoin = document.querySelector('input[name="eventJoin"]:checked').value === 'yes';
 
             if (totalRequested === 0) {
                 alert("大人、または子どもの人数を1名以上選択してください。");
@@ -667,15 +722,17 @@
                 return;
             }
 
+            // 保存データに eventJoin を追加
             const ticketData = {
                 adults: adults,
                 children: children,
                 startNo: startNo,
-                endNo: endNo
+                endNo: endNo,
+                eventJoin: eventJoin
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(ticketData));
             
-            showMyTicket(adults, children, startNo, endNo);
+            showMyTicket(adults, children, startNo, endNo, eventJoin);
             updateCounterDisplay(newCount);
             
             setInterval(async () => {
@@ -684,26 +741,38 @@
             }, 15000);
         }
 
-        function showMyTicket(adults, children, startNo, endNo) {
+        function showMyTicket(adults, children, startNo, endNo, eventJoin) {
             document.getElementById('actionWrapper').style.display = "none";
             document.getElementById('closedMessage').style.display = "none";
             
-            const ticketWrapper = document.getElementById('ticketWrapper');
-            const ticketDetails = document.getElementById('ticketDetails');
-            const ticketNo = document.getElementById('ticketNo');
+            const ticketsDisplayArea = document.getElementById('ticketsDisplayArea');
             
-            ticketDetails.innerText = `大人 ${adults}名 / 子ども ${children}名`;
-            
+            // 1. 食堂のチケット表示設定
+            document.getElementById('ticketDetails').innerText = `大人 ${adults}名 / 子ども ${children}名`;
             const padStartNo = String(startNo).padStart(3, '0');
             const padEndNo = String(endNo).padStart(3, '0');
             
             if (startNo === endNo) {
-                ticketNo.innerHTML = `<span>No.${padStartNo}</span>`;
+                document.getElementById('ticketNo').innerHTML = `<span>No.${padStartNo}</span>`;
             } else {
-                ticketNo.innerHTML = `<span>No.${padStartNo} ～ No.${padEndNo}</span>`;
+                document.getElementById('ticketNo').innerHTML = `<span>No.${padStartNo} ～ No.${padEndNo}</span>`;
+            }
+
+            // 2. イベントのチケット表示設定（参加する場合のみ）
+            const eventTicketContainer = document.getElementById('eventTicketContainer');
+            if (eventJoin) {
+                document.getElementById('eventTicketDetails').innerText = `大人 ${adults}名 / 子ども ${children}名`;
+                if (startNo === endNo) {
+                    document.getElementById('eventTicketNo').innerHTML = `<span>E-${padStartNo}</span>`;
+                } else {
+                    document.getElementById('eventTicketNo').innerHTML = `<span>E-${padStartNo} ～ E-${padEndNo}</span>`;
+                }
+                eventTicketContainer.style.display = "block";
+            } else {
+                eventTicketContainer.style.display = "none";
             }
             
-            ticketWrapper.style.display = "block";
+            ticketsDisplayArea.style.display = "block";
         }
 
         async function cancelTicket() {
@@ -714,13 +783,12 @@
             if (savedTicketData) {
                 const info = JSON.parse(savedTicketData);
                 const canceledPeople = info.adults + info.children;
-                
                 await updateCount(-canceledPeople);
             }
 
             localStorage.removeItem(STORAGE_KEY);
 
-            document.getElementById('ticketWrapper').style.display = "none";
+            document.getElementById('ticketsDisplayArea').style.display = "none";
             document.getElementById('actionWrapper').style.display = "block";
             document.getElementById('issueBtn').innerText = "整理券を発行する";
             document.getElementById('issueBtn').disabled = false;

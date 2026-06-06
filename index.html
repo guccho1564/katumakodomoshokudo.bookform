@@ -164,6 +164,8 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            flex: 1; /* スマホでボタンが押しやすくなるように幅を広げる */
+            min-width: 120px;
         }
         .select-group label {
             font-weight: bold;
@@ -176,6 +178,8 @@
             border: 2px solid #ddd;
             background-color: #fff;
             cursor: pointer;
+            width: 100%; /* セレクトボックスを要素いっぱいに広げる */
+            text-align: center;
         }
 
         .reserve-btn {
@@ -318,6 +322,60 @@
             text-align: center;
             padding: 25px 20px;
             margin-top: 50px;
+        }
+
+        /* ==========================================
+           6. ★スマートフォン向けレイアウト調整（追加）
+           ========================================== */
+        @media screen and (max-width: 768px) {
+            /* 画面サイズが768px（スマホや小さめのタブレット）以下の場合に適用されるルール */
+            
+            .container {
+                padding: 30px 15px; /* スマホでは左右の余白を少し狭くして画面を広く使う */
+            }
+            .header-container {
+                flex-direction: column; /* ヘッダーのロゴとメニューを縦並びに */
+                gap: 15px;
+                padding: 15px;
+            }
+            header h1 {
+                font-size: 1.2rem;
+            }
+            header nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero {
+                height: auto;
+                padding: 60px 15px; /* 高さを自動にして、文字数に合わせて伸縮させる */
+            }
+            .hero-content h2 {
+                font-size: 1.4rem;
+            }
+            .counter-box {
+                padding: 15px;
+            }
+            .status-title {
+                font-size: 1.1rem;
+            }
+            .select-form-container {
+                gap: 15px;
+                padding: 15px;
+            }
+            .reserve-btn {
+                font-size: 1.1rem;
+                padding: 15px 20px;
+            }
+            .ticket-container {
+                padding: 20px 15px;
+            }
+            .ticket-number {
+                font-size: 1.8rem; /* 整理券番号の改行崩れを防ぐため少し小さく */
+            }
+            .history-grid {
+                grid-template-columns: 1fr; /* 開催履歴の写真を1列の縦並びにする */
+            }
         }
     </style>
 </head>

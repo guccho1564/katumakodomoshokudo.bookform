@@ -247,8 +247,7 @@
             font-weight: bold;
             margin-top: 15px;
         }
-
-        /* 💡追加：キャンセルボタンのスタイル */
+        
         .cancel-btn {
             background-color: #ffffff;
             color: #95a5a6;
@@ -344,6 +343,7 @@
         </div>
     </section>
 
+    <!-- 紹介セクション -->
     <section id="about" class="container">
         <h2 class="section-title">子ども食堂について</h2>
         <div style="text-align: center; max-width: 800px; margin: 0 auto;">
@@ -356,6 +356,7 @@
         </div>
     </section>
 
+    <!-- 予約（整理券発行）セクション -->
     <section id="reserve" class="bg-white">
         <div class="container">
             <h2 class="section-title">次回の参加予約（整理券発行）</h2>
@@ -369,6 +370,7 @@
                 </div>
             </div>
 
+            <!-- アクションエリア -->
             <div class="action-wrapper" id="actionWrapper">
                 <div class="select-form-container">
                     <div class="select-group">
@@ -379,6 +381,7 @@
                             <option value="2">2名</option>
                             <option value="3">3名</option>
                             <option value="4">4名</option>
+                            <option value="5">5名</option>
                         </select>
                     </div>
                     <div class="select-group">
@@ -390,7 +393,6 @@
                             <option value="3">3名</option>
                             <option value="4">4名</option>
                             <option value="5">5名</option>
-　　　　　　　　　　　　　　　　　<option value="6">6名</option>
                         </select>
                     </div>
                 </div>
@@ -398,6 +400,7 @@
                 <button class="reserve-btn" id="issueBtn" onclick="issueFamilyTicket()">整理券を発行する</button>
             </div>
 
+            <!-- 整理券表示エリア -->
             <div class="action-wrapper" id="ticketWrapper" style="display: none;">
                 <div class="ticket-container">
                     <div class="ticket-header">🍙 みんなの笑顔子ども食堂 参加整理券</div>
@@ -405,13 +408,13 @@
                     <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">あなたのご予約番号</p>
                     <div class="ticket-number" id="ticketNo">No.000</div>
                     <div class="ticket-notice">
-                        ⚠️ 画面を消さないようにスクリーンショットを撮って、当日受付で見せてね！
+                        ⚠️ 画面を消さないようにスクリーンショットを撮るか、メモをして当日受付で見せてね！
                     </div>
-                    
                     <button class="cancel-btn" onclick="cancelTicket()">この予約をキャンセルする</button>
                 </div>
             </div>
 
+            <!-- 満員時のメッセージ -->
             <div class="action-wrapper" id="closedMessage" style="display: none;">
                 <div class="closed-message-box">
                     【満員御礼】定員の300人に達したため、整理券の発行は終了いたしました。<br>
@@ -421,25 +424,29 @@
         </div>
     </section>
 
-    <section id="history" class="container">
-        </section>
+    <!-- 開催履歴セクション -->
     <section id="history" class="container">
         <h2 class="section-title">これまでの開催履歴</h2>
         <div class="history-grid">
             <div class="history-card">
-                <div class="history-img" style="background-image: url('https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="history-img" style="background-image: url('https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80');"></div>
                 <div class="history-content">
-                    <div class="history-date">2026年5月23日</div>
-                    <h3>具だくさんカレーライスの日</h3>
-                    <p>みんな大好きな特製カレーライス！たくさんのお友達が集まってにぎやかに食べました。</p>
+                    <h3>2026年4月：春の地元野菜カレーライス</h3>
+                    <p>山口県産の無農薬野菜をたっぷり使ったカレーです。みんなでワイワイ美味しく食べました！</p>
                 </div>
             </div>
             <div class="history-card">
-                <div class="history-img" style="background-image: url('https://images.unsplash.com/photo-1517093157656-b9ecfe91ca64?auto=format&fit=crop&w=400&q=80');"></div>
+                <div class="history-img" style="background-image: url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80');"></div>
                 <div class="history-content">
-                    <div class="history-date">2026年5月9日</div>
-                    <h3>みんなでパンケーキ会</h3>
-                    <p>新しい学年になったお祝いに、デザートにふわふわ特製パンケーキを焼きました！</p>
+                    <h3>2026年2月：栄養満点！和食プレート</h3>
+                    <p>体に優しいオーガニック食材を取り入れ、栄養バランスを考えた和食定食を楽しみました。</p>
+                </div>
+            </div>
+            <div class="history-card">
+                <div class="history-img" style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80');"></div>
+                <div class="history-content">
+                    <h3>2025年12月：クリスマス特別ランチ</h3>
+                    <p>デザートに手作りのヘルシーケーキもついて、笑顔あふれる時間になりました。</p>
                 </div>
             </div>
         </div>
@@ -449,7 +456,7 @@
         <p>&copy; 2026 みんなの笑顔子ども食堂. All Rights Reserved.</p>
     </footer>
 
-   <!-- ==========================================
+    <!-- ==========================================
        9. リアルタイム連動（スプレッドシート連携）対応ロジック
        ========================================== -->
     <script>
@@ -466,8 +473,6 @@
         // =======================================================
         // サーバー（スプレッドシート）と通信する機能
         // =======================================================
-        
-        // 1. 現在の最新人数を取得する
         async function fetchCurrentCount() {
             try {
                 const response = await fetch(GAS_URL);
@@ -479,7 +484,6 @@
             }
         }
 
-        // 2. 人数を更新する（予約：プラス、キャンセル：マイナス）
         async function updateCount(changeAmount) {
             try {
                 const response = await fetch(`${GAS_URL}?action=update&changeAmount=${changeAmount}`);
@@ -494,10 +498,7 @@
         // =======================================================
         // 画面の動作ロジック
         // =======================================================
-
-        // ページ読み込み時の初期化処理
         async function initPage() {
-            // スプレッドシートから現在の人数を取得
             const currentCount = await fetchCurrentCount();
             
             if (currentCount === null) {
@@ -508,12 +509,10 @@
             const savedTicketData = localStorage.getItem(STORAGE_KEY);
             
             if (savedTicketData) {
-                // すでに予約済みの場合は整理券を表示
                 const info = JSON.parse(savedTicketData);
                 showMyTicket(info.adults, info.children, info.startNo, info.endNo);
                 updateCounterDisplay(currentCount);
                 
-                // 【リアルタイム更新】15秒ごとに裏側で最新の人数をチェックする
                 setInterval(async () => {
                     const count = await fetchCurrentCount();
                     if(count !== null) updateCounterDisplay(count);
@@ -521,7 +520,6 @@
                 return;
             }
 
-            // まだ予約していない状態
             updateCounterDisplay(currentCount);
         }
 
@@ -565,7 +563,6 @@
             }
         }
 
-        // 整理券の発行処理（予約ボタンを押した時）
         async function issueFamilyTicket() {
             const adults = Number(document.getElementById('adultSelect').value);
             const children = Number(document.getElementById('childSelect').value);
@@ -576,7 +573,6 @@
                 return;
             }
 
-            // ボタンを押した瞬間の「最新の人数」をスプレッドシートから再確認
             const currentCount = await fetchCurrentCount();
             if (currentCount === null) {
                 alert("通信エラーが発生しました。もう一度お試しください。");
@@ -586,7 +582,6 @@
             const startNo = currentCount + 1;
             const endNo = currentCount + totalRequested;
 
-            // 上限チェック
             if (endNo > MAX_CAPACITY) {
                 const currentRemaining = MAX_CAPACITY - currentCount;
                 if (currentRemaining <= 0) {
@@ -598,8 +593,6 @@
                 return;
             }
 
-            // 【重要】スプレッドシートに人数を加算（予約確定）
-            // ※ボタンを押すと少しだけ（1〜2秒）待機時間が発生します
             document.getElementById('issueBtn').innerText = "処理中...";
             document.getElementById('issueBtn').disabled = true;
 
@@ -611,7 +604,6 @@
                 return;
             }
 
-            // ブラウザに整理券情報を保存
             const ticketData = {
                 adults: adults,
                 children: children,
@@ -620,11 +612,9 @@
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(ticketData));
             
-            // 画面を切り替え
             showMyTicket(adults, children, startNo, endNo);
             updateCounterDisplay(newCount);
             
-            // 予約後も15秒ごとに状況を更新
             setInterval(async () => {
                 const count = await fetchCurrentCount();
                 if(count !== null) updateCounterDisplay(count);
@@ -653,7 +643,6 @@
             ticketWrapper.style.display = "block";
         }
 
-        // 予約キャンセルの処理
         async function cancelTicket() {
             const isConfirmed = confirm("本当に予約（整理券）をキャンセルしますか？");
             if (!isConfirmed) return;
@@ -663,14 +652,11 @@
                 const info = JSON.parse(savedTicketData);
                 const canceledPeople = info.adults + info.children;
                 
-                // 【重要】スプレッドシートから人数を減らす
                 await updateCount(-canceledPeople);
             }
 
-            // スマホの記憶から削除
             localStorage.removeItem(STORAGE_KEY);
 
-            // 画面をリセット
             document.getElementById('ticketWrapper').style.display = "none";
             document.getElementById('actionWrapper').style.display = "block";
             document.getElementById('issueBtn').innerText = "整理券を発行する";
@@ -682,7 +668,6 @@
             alert("予約をキャンセルしました。ご協力ありがとうございました。");
         }
 
-        // プログラム起動
         initPage();
     </script>
 </body>

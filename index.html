@@ -19,27 +19,31 @@
         .hero { background: linear-gradient(rgba(243, 156, 18, 0.2), rgba(211, 84, 0, 0.4)), url('https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover; height: 350px; display: flex; justify-content: center; align-items: center; color: #ffffff; text-align: center; padding: 0 20px; }
         .hero-content { background: rgba(255, 255, 255, 0.9); color: #333; padding: 25px 35px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 600px; }
         .hero-content h2 { font-size: 1.8rem; margin-bottom: 10px; color: #d35400; }
-        .counter-box { background-color: #fff3cd; border: 2px solid #ffeeba; padding: 25px; border-radius: 12px; text-align: center; margin: 0 auto 35px; max-width: 640px; }
+        
+        .counter-box { background-color: #fff3cd; border: 2px solid #ffeeba; padding: 25px; border-radius: 12px; text-align: center; margin: 0 auto 35px; max-width: 680px; }
         .status-title { font-size: 1.25rem; font-weight: bold; }
         .status-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; color: #fff; font-size: 0.9rem; margin-left: 5px; }
         .badge-active { background-color: #28a745; } .badge-warning { background-color: #ff9f43; } .badge-full { background-color: #dc3545; }
         .count-alert { color: #dc3545; font-size: 1.6rem; font-weight: bold; margin-top: 10px; }
-        .action-wrapper { max-width: 640px; margin: 0 auto; text-align: center; }
-        .select-form-container { background: #ffffff; border: 1px solid #e0e0e0; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 20px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
-        .select-group { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; min-width: 120px; }
-        .select-group label { font-weight: bold; color: #555; }
-        .select-group select { font-size: 1.2rem; padding: 8px 16px; border-radius: 6px; border: 2px solid #ddd; background-color: #fff; cursor: pointer; width: 100%; text-align: center; }
         
-        /* 参加スタイル選択ボックス（3択化にともないデザイン微調整） */
-        .event-option-box { background-color: #e3f2fd; border: 2px solid #bbdefb; padding: 20px; border-radius: 12px; margin-bottom: 25px; text-align: center; }
-        .event-option-box p { font-weight: bold; color: #1565c0; margin-bottom: 15px; font-size: 1.1rem; }
-        .radio-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .radio-label { background: #ffffff; padding: 12px 20px; border-radius: 30px; border: 2px solid #90caf9; cursor: pointer; font-weight: bold; color: #333; transition: all 0.2s; font-size: 0.95rem; display: flex; align-items: center; }
-        .radio-label:hover { background: #e3f2fd; }
-        .radio-label input[type="radio"] { margin-right: 8px; transform: scale(1.2); }
+        .action-wrapper { max-width: 680px; margin: 0 auto; text-align: center; }
         
-        .reserve-btn { background-color: #e67e22; color: #ffffff; border: none; padding: 18px 40px; font-size: 1.3rem; font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3); transition: all 0.3s; width: 100%; max-width: 400px; }
+        /* 人数選択カードのデザイン（メニューごとに独立化） */
+        .menu-card { background: #ffffff; border: 2px solid #e0e0e0; padding: 25px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 25px; text-align: left; transition: all 0.3s; }
+        .menu-card.shokudo-card { border-left: 8px solid #e67e22; }
+        .menu-card.event-card { border-left: 8px solid #2980b9; background-color: #f4f9fd; }
+        .menu-card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .shokudo-card .menu-card-title { color: #d35400; }
+        .event-card .menu-card-title { color: #21618c; }
+        
+        .select-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+        .select-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 140px; }
+        .select-group label { font-weight: bold; color: #555; font-size: 0.95rem; }
+        .select-group select { font-size: 1.1rem; padding: 10px; border-radius: 8px; border: 2px solid #ddd; background-color: #fff; cursor: pointer; width: 100%; }
+        
+        .reserve-btn { background-color: #e67e22; color: #ffffff; border: none; padding: 18px 40px; font-size: 1.3rem; font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3); transition: all 0.3s; width: 100%; max-width: 400px; margin-top: 10px; }
         .reserve-btn:hover { background-color: #d35400; transform: translateY(-2px); }
+        
         .tickets-wrapper { display: flex; flex-direction: column; gap: 20px; align-items: center; }
         .ticket-container { background: #ffffff; border: 3px dashed #d35400; border-radius: 15px; padding: 30px; width: 100%; max-width: 450px; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: center; }
         .ticket-header { font-size: 1.1rem; color: #7f8c8d; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
@@ -47,14 +51,17 @@
         .ticket-number { font-size: 2.5rem; font-weight: bold; color: #333; margin: 15px 0; letter-spacing: 1px; line-height: 1.3; }
         .ticket-number span { color: #d35400; }
         .ticket-notice { font-size: 0.9rem; color: #c0392b; background: #fdeed0; padding: 10px; border-radius: 6px; font-weight: bold; margin-top: 15px; }
+        
         .event-ticket { border-color: #2980b9; }
         .event-ticket .ticket-header { color: #2980b9; }
         .event-ticket .ticket-details { background: #eaf2f8; color: #2980b9; }
         .event-ticket .ticket-number span { color: #2980b9; }
         .event-ticket .ticket-notice { color: #1f618d; background: #eaf2f8; }
-        .cancel-btn { background-color: #ffffff; color: #95a5a6; border: 2px solid #bdc3c7; padding: 10px 20px; font-size: 0.95rem; font-weight: bold; border-radius: 50px; cursor: pointer; margin-top: 15px; transition: all 0.3s; }
+        
+        .cancel-btn { background-color: #ffffff; color: #95a5a6; border: 2px solid #bdc3c7; padding: 10px 20px; font-size: 0.95rem; font-weight: bold; border-radius: 50px; cursor: pointer; margin-top: 20px; transition: all 0.3s; }
         .cancel-btn:hover { background-color: #fdf2f2; color: #e74c3c; border-color: #e74c3c; }
-        .closed-message-box { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 40px 20px; border-radius: 12px; text-align: center; font-weight: bold; font-size: 1.2rem; }
+        
+        .closed-message-box { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 0.95rem; }
         .info-list { margin: 20px auto 0; list-style-type: none; max-width: 600px; text-align: left; }
         .info-list li { padding: 15px; background: #ffffff; margin-bottom: 12px; border-left: 6px solid #ff9f43; border-radius: 4px; }
         .history-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -62,8 +69,9 @@
         .history-img { height: 200px; background-size: cover; background-position: center; }
         .history-content { padding: 20px; }
         footer { background-color: #34495e; color: #ffffff; text-align: center; padding: 25px 20px; margin-top: 50px; }
+        
         @media screen and (max-width: 768px) {
-            .container { padding: 30px 15px; } .header-container { flex-direction: column; gap: 15px; padding: 15px; } header h1 { font-size: 1.2rem; } header nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; } .hero { height: auto; padding: 60px 15px; } .hero-content h2 { font-size: 1.4rem; } .counter-box { padding: 15px; } .status-title { font-size: 1.1rem; } .select-form-container { gap: 15px; padding: 15px; } .radio-group { flex-direction: column; gap: 10px; } .reserve-btn { font-size: 1.1rem; padding: 15px 20px; } .ticket-container { padding: 20px 15px; } .ticket-number { font-size: 1.8rem; } .history-grid { grid-template-columns: 1fr; }
+            .container { padding: 30px 15px; } .header-container { flex-direction: column; gap: 15px; padding: 15px; } header h1 { font-size: 1.2rem; } header nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; } .hero { height: auto; padding: 60px 15px; } .hero-content h2 { font-size: 1.4rem; } .counter-box { padding: 15px; } .status-title { font-size: 1.1rem; } .select-grid { gap: 15px; } .reserve-btn { font-size: 1.1rem; padding: 15px 20px; } .ticket-container { padding: 20px 15px; } .ticket-number { font-size: 1.8rem; } .history-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -85,14 +93,14 @@
     <section class="hero">
         <div class="hero-content">
             <h2>みんなで食べると、もっと美味しい！</h2>
-            <p>あたたかいご飯とお友達が待っているよ。人数を選んで整理券をもらってね！</p>
+            <p>食堂とイベント、それぞれ参加する人の人数を選んで整理券をもらってね！</p>
         </div>
     </section>
 
     <section id="about" class="container">
         <h2 class="section-title">子ども食堂 ＆ イベントについて</h2>
         <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <p>地域の子どもたちやご家族が安心して美味しく過ごせる居場所です。食後には楽しいイベントも開催しています！</p>
+            <p>地域の子どもたちやご家族が安心して過ごせる居場所です。美味しいご飯のあとには楽しいイベントも開催！</p>
             <ul class="info-list">
                 <li><strong>開催日時</strong> 毎月 第2・第4土曜日 12:00〜14:00</li>
                 <li><strong>開催場所</strong> 地域コミュニティセンター 1階 和室</li>
@@ -115,58 +123,81 @@
             </div>
 
             <div class="action-wrapper" id="actionWrapper">
-                <div class="select-form-container">
-                    <div class="select-group">
-                        <label for="adultSelect">大人の人数</label>
-                        <select id="adultSelect">
-                            <option value="0">0名</option>
-                            <option value="1" selected>1名</option>
-                            <option value="2">2名</option>
-                            <option value="3">3名</option>
-                            <option value="4">4名</option>
-                            <option value="5">5名</option>
-                        </select>
-                    </div>
-                    <div class="select-group">
-                        <label for="childSelect">子どもの人数</label>
-                        <select id="childSelect">
-                            <option value="0">0名</option>
-                            <option value="1">1名</option>
-                            <option value="2" selected>2名</option>
-                            <option value="3">3名</option>
-                            <option value="4">4名</option>
-                            <option value="5">5名</option>
-                        </select>
+                
+                <div class="closed-message-box" id="shokudoClosedMsg" style="display: none;">
+                    【食堂は満員】定員の300人に達したため、食堂の受付は終了しました。イベントの予約は可能です！
+                </div>
+
+                <!-- 1. 食堂の人数選択カード -->
+                <div class="menu-card shokudo-card" id="shokudoCard">
+                    <div class="menu-card-title">🍙 食堂に参加する人数</div>
+                    <div class="select-grid">
+                        <div class="select-group">
+                            <label for="sAdultSelect">大人の人数</label>
+                            <select id="sAdultSelect">
+                                <option value="0">0名</option>
+                                <option value="1" selected>1名</option>
+                                <option value="2">2名</option>
+                                <option value="3">3名</option>
+                                <option value="4">4名</option>
+                                <option value="5">5名</option>
+                            </select>
+                        </div>
+                        <div class="select-group">
+                            <label for="sChildSelect">子どもの人数</label>
+                            <select id="sChildSelect">
+                                <option value="0">0名</option>
+                                <option value="1">1名</option>
+                                <option value="2" selected>2名</option>
+                                <option value="3">3名</option>
+                                <option value="4">4名</option>
+                                <option value="5">5名</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 参加タイプを3択に変更 -->
-                <div class="event-option-box">
-                    <p>✨ ご希望の参加スタイルを選んでください</p>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="eventJoin" value="both" checked> 🍙食堂 ＋ 🎈イベント両方
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="eventJoin" value="shokudo_only"> 🍙食堂のみ参加
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="eventJoin" value="event_only"> 🎈イベントのみ参加
-                        </label>
+                <!-- 2. イベントの人数選択カード -->
+                <div class="menu-card event-card">
+                    <div class="menu-card-title">🎈 お楽しみイベントに参加する人数</div>
+                    <div class="select-grid">
+                        <div class="select-group">
+                            <label for="eAdultSelect">大人の人数</label>
+                            <select id="eAdultSelect">
+                                <option value="0">0名</option>
+                                <option value="1" selected>1名</option>
+                                <option value="2">2名</option>
+                                <option value="3">3名</option>
+                                <option value="4">4名</option>
+                                <option value="5">5名</option>
+                            </select>
+                        </div>
+                        <div class="select-group">
+                            <label for="eChildSelect">子どもの人数</label>
+                            <select id="eChildSelect">
+                                <option value="0">0名</option>
+                                <option value="1">1名</option>
+                                <option value="2" selected>2名</option>
+                                <option value="3">3名</option>
+                                <option value="4">4名</option>
+                                <option value="5">5名</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
                 <p style="margin-bottom: 15px; font-weight: bold; color: #555;">内容を確認してボタンを押すと、整理券が発行されます。</p>
-                <button class="reserve-btn" id="issueBtn" onclick="issueFamilyTicket()">整理券を発行する</button>
+                <button class="reserve-btn" id="issueBtn" onclick="issueSeparatedTicket()">整理券を発行する</button>
             </div>
 
+            <!-- 整理券表示エリア -->
             <div id="ticketsDisplayArea" style="display: none; text-align: center;">
                 <div class="tickets-wrapper">
                     
                     <!-- 食堂用整理券 -->
-                    <div class="ticket-container" id="shokudoTicketContainer">
+                    <div class="ticket-container" id="shokudoTicketContainer" style="display: none;">
                         <div class="ticket-header">🍙 みんなの笑顔子ども食堂 参加整理券</div>
-                        <div class="ticket-details" id="ticketDetails">大人 1名 / 子ども 2名</div>
+                        <div class="ticket-details" id="ticketDetails">大人 0名 / 子ども 0名</div>
                         <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">食堂のご予約番号</p>
                         <div class="ticket-number" id="ticketNo">No.000</div>
                         <div class="ticket-notice">
@@ -177,7 +208,7 @@
                     <!-- イベント用整理券 -->
                     <div class="ticket-container event-ticket" id="eventTicketContainer" style="display: none;">
                         <div class="ticket-header">🎈 お楽しみイベント 参加整理券</div>
-                        <div class="ticket-details" id="eventTicketDetails">大人 1名 / 子ども 2名</div>
+                        <div class="ticket-details" id="eventTicketDetails">大人 0名 / 子ども 0名</div>
                         <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">イベント整理番号</p>
                         <div class="ticket-number" id="eventTicketNo"><span>E-000</span></div>
                         <div class="ticket-notice">
@@ -188,12 +219,6 @@
                 <button class="cancel-btn" onclick="cancelTicket()">すべての予約をキャンセルする</button>
             </div>
 
-            <div class="action-wrapper" id="closedMessage" style="display: none;">
-                <div class="closed-message-box">
-                    【満員御礼】定員の300人に達したため、食堂の整理券発行は終了いたしました。<br>
-                    （※イベントのみ参加の受付は、引き続きお選びいただけます）
-                </div>
-            </div>
         </div>
     </section>
 
@@ -226,10 +251,10 @@
        ========================================== -->
     <script>
         // ★新しくデプロイして発行されたURLに貼り換えてください
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbx8nCrCLgGYu5C8W669Qz1YKLJ4Rsiesw9nvCWJ5hvz3EVv66LKugUf87X7X4cCm6CI/exec";
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbx7ErHXNRE9fjSQaanKzfajgLXTMKrhyRgTQoNjUw_Zf-T0eoJNagWgHAhnvn3LbdLQ/exec";
         
         const MAX_CAPACITY = 300; 
-        const EVENT_ID = "event_2026_06_three_options"; 
+        const EVENT_ID = "event_2026_06_separated_options"; 
         const STORAGE_KEY = 'shokudo_ticket_' + EVENT_ID;
 
         async function fetchCurrentData() {
@@ -243,14 +268,15 @@
             }
         }
 
-        async function updateCount(type, adults, children, shokudoChange, eventJoin, eventChange) {
+        async function updateCount(type, sAdults, sChildren, eAdults, eChildren, shokudoChange, eventChange) {
             try {
                 const url = `${GAS_URL}?action=update`
                     + `&type=${encodeURIComponent(type)}`
-                    + `&adults=${adults}`
-                    + `&children=${children}`
+                    + `&sAdults=${sAdults}`
+                    + `&sChildren=${sChildren}`
+                    + `&eAdults=${eAdults}`
+                    + `&eChildren=${eChildren}`
                     + `&shokudoChange=${shokudoChange}`
-                    + `&eventJoin=${encodeURIComponent(eventJoin)}`
                     + `&eventChange=${eventChange}`;
                 const response = await fetch(url);
                 const data = await response.json();
@@ -271,7 +297,7 @@
             const savedTicketData = localStorage.getItem(STORAGE_KEY);
             if (savedTicketData) {
                 const info = JSON.parse(savedTicketData);
-                showMyTicket(info.adults, info.children, info.startNo, info.endNo, info.eventJoin, info.eventStartNo, info.eventEndNo);
+                showMyTicket(info);
                 updateCounterDisplay(currentData.count);
                 
                 setInterval(async () => {
@@ -287,59 +313,60 @@
             const statusBadge = document.getElementById('statusBadge');
             const countAlert = document.getElementById('countAlert');
             const remainingCount = document.getElementById('remainingCount');
-            const closedMessage = document.getElementById('closedMessage');
-            const radioLabels = document.querySelectorAll('.radio-label');
+            const shokudoCard = document.getElementById('shokudoCard');
+            const shokudoClosedMsg = document.getElementById('shokudoClosedMsg');
 
             const remaining = MAX_CAPACITY - currentCount;
 
             if (currentCount >= MAX_CAPACITY) {
-                statusBadge.innerText = "食堂は満員（イベントのみ受付中）";
+                statusBadge.innerText = "食堂満員（イベントのみ受付中）";
                 statusBadge.className = "status-badge badge-full";
                 countAlert.style.display = "none";
                 
-                // 食堂が満員の場合、食堂が含まれる選択肢を選択不可にする
-                radioLabels.forEach(label => {
-                    const input = label.querySelector('input');
-                    if (input.value === 'both' || input.value === 'shokudo_only') {
-                        label.style.opacity = "0.4";
-                        label.style.pointerEvents = "none";
-                        if(input.checked) {
-                            document.querySelector('input[value="event_only"]').checked = true;
-                        }
-                    }
-                });
+                // 食堂をロック（選択を0名に固定）
+                document.getElementById('sAdultSelect').value = "0";
+                document.getElementById('sChildSelect').value = "0";
+                shokudoCard.style.opacity = "0.4";
+                shokudoCard.style.pointerEvents = "none";
                 
                 if(!localStorage.getItem(STORAGE_KEY)) {
-                    closedMessage.style.display = "block";
+                    shokudoClosedMsg.style.display = "block";
                 }
             } else if (remaining <= 100) {
                 statusBadge.innerText = "食堂残りわずか！";
                 statusBadge.className = "status-badge badge-warning";
                 countAlert.style.display = "block";
                 remainingCount.innerText = remaining;
-                closedMessage.style.display = "none";
+                shokudoClosedMsg.style.display = "none";
                 
-                // 制限解除
-                radioLabels.forEach(label => { label.style.opacity = "1"; label.style.pointerEvents = "auto"; });
+                // ロック解除
+                shokudoCard.style.opacity = "1";
+                shokudoCard.style.pointerEvents = "auto";
             } else {
                 statusBadge.innerText = "受付中";
                 statusBadge.className = "status-badge badge-active";
                 countAlert.style.display = "none";
-                closedMessage.style.display = "none";
+                shokudoClosedMsg.style.display = "none";
                 
-                radioLabels.forEach(label => { label.style.opacity = "1"; label.style.pointerEvents = "auto"; });
+                // ロック解除
+                shokudoCard.style.opacity = "1";
+                shokudoCard.style.pointerEvents = "auto";
             }
         }
 
-        async function issueFamilyTicket() {
-            const adults = Number(document.getElementById('adultSelect').value);
-            const children = Number(document.getElementById('childSelect').value);
-            const totalRequested = adults + children;
-            
-            const selectedStyle = document.querySelector('input[name="eventJoin"]:checked').value;
+        async function issueSeparatedTicket() {
+            // 食堂の選択人数
+            const sAdults = Number(document.getElementById('sAdultSelect').value);
+            const sChildren = Number(document.getElementById('sChildSelect').value);
+            const totalShokudo = sAdults + sChildren;
 
-            if (totalRequested === 0) {
-                alert("大人、または子どもの人数を1名以上選択してください。");
+            // イベントの選択人数
+            const eAdults = Number(document.getElementById('eAdultSelect').value);
+            const eChildren = Number(document.getElementById('eChildSelect').value);
+            const totalEvent = eAdults + eChildren;
+
+            if (totalShokudo === 0 && totalEvent === 0) {
+                alert("食堂、またはイベントの人数を1名以上選択してください。");
                 return;
             }
 
@@ -349,29 +376,23 @@
                 return;
             }
 
-            // 人数の振り分け計算
-            const includeShokudo = (selectedStyle === 'both' || selectedStyle === 'shokudo_only');
-            const includeEvent = (selectedStyle === 'both' || selectedStyle === 'event_only');
-
             const currentCount = currentData.count;
             const currentEventCount = currentData.eventCount;
 
-            const shokudoChange = includeShokudo ? totalRequested : 0;
-            const eventChange = includeEvent ? totalRequested : 0;
+            // 発行される番号の計算
+            const startNo = totalShokudo > 0 ? currentCount + 1 : 0;
+            const endNo = totalShokudo > 0 ? currentCount + totalShokudo : 0;
 
-            const startNo = includeShokudo ? currentCount + 1 : 0;
-            const endNo = includeShokudo ? currentCount + totalRequested : 0;
+            const eventStartNo = totalEvent > 0 ? currentEventCount + 1 : 0;
+            const eventEndNo = totalEvent > 0 ? currentEventCount + totalEvent : 0;
 
-            const eventStartNo = includeEvent ? currentEventCount + 1 : 0;
-            const eventEndNo = includeEvent ? currentEventCount + totalRequested : 0;
-
-            // 食堂の300人上限チェック（イベントのみ参加の場合はスルーされます）
-            if (includeShokudo && endNo > MAX_CAPACITY) {
+            // 食堂の300人上限チェック
+            if (totalShokudo > 0 && endNo > MAX_CAPACITY) {
                 const currentRemaining = MAX_CAPACITY - currentCount;
                 if (currentRemaining <= 0) {
-                    alert("申し訳ありません。たった今、食堂が満員に達しました。「イベントのみ参加」であれば受け付け可能です。");
+                    alert("申し訳ありません。たった今、食堂が満員に達しました。イベントのみであれば受付可能です。");
                 } else {
-                    alert(`申し訳ありません。現在の食堂残り枠はあと【 ${currentRemaining} 名様 】のため、ご指定の人数（${totalRequested}名）での予約が承れません。`);
+                    alert(`申し訳ありません。現在の食堂残り枠はあと【 ${currentRemaining} 名様 】のため、ご指定の人数（${totalShokudo}名）での予約が承れません。`);
                 }
                 updateCounterDisplay(currentCount);
                 return;
@@ -380,12 +401,8 @@
             document.getElementById('issueBtn').innerText = "処理中...";
             document.getElementById('issueBtn').disabled = true;
 
-            let eventJoinText = "両方";
-            if(selectedStyle === 'shokudo_only') eventJoinText = "食堂のみ";
-            if(selectedStyle === 'event_only') eventJoinText = "イベントのみ";
-            
-            // GASへデータを送信
-            const newData = await updateCount("予約", adults, children, shokudoChange, eventJoinText, eventChange);
+            // GASへデータを送信（増減値は選択された人数そのもの）
+            const newData = await updateCount("予約", sAdults, sChildren, eAdults, eChildren, totalShokudo, totalEvent);
             
             if (newData === null) {
                 alert("予約の処理に失敗しました。");
@@ -394,18 +411,14 @@
                 return;
             }
 
+            // ローカルストレージに保存するオブジェクト
             const ticketData = { 
-                adults: adults, 
-                children: children, 
-                startNo: startNo, 
-                endNo: endNo, 
-                eventJoin: selectedStyle,
-                eventStartNo: eventStartNo,
-                eventEndNo: eventEndNo
+                sAdults: sAdults, sChildren: sChildren, startNo: startNo, endNo: endNo,
+                eAdults: eAdults, eChildren: eChildren, eventStartNo: eventStartNo, eventEndNo: eventEndNo
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(ticketData));
             
-            showMyTicket(adults, children, startNo, endNo, selectedStyle, eventStartNo, eventEndNo);
+            showMyTicket(ticketData);
             updateCounterDisplay(newData.count);
             
             setInterval(async () => {
@@ -414,19 +427,17 @@
             }, 15000);
         }
 
-        function showMyTicket(adults, children, startNo, endNo, eventJoin, eventStartNo, eventEndNo) {
+        function showMyTicket(info) {
             document.getElementById('actionWrapper').style.display = "none";
-            document.getElementById('closedMessage').style.display = "none";
-            
             const ticketsDisplayArea = document.getElementById('ticketsDisplayArea');
             
             // 食堂用整理券の表示制御
             const shokudoTicketContainer = document.getElementById('shokudoTicketContainer');
-            if (eventJoin === 'both' || eventJoin === 'shokudo_only') {
-                document.getElementById('ticketDetails').innerText = `大人 ${adults}名 / 子ども ${children}名`;
-                const padStartNo = String(startNo).padStart(3, '0');
-                const padEndNo = String(endNo).padStart(3, '0');
-                if (startNo === endNo) {
+            if (info.startNo > 0) {
+                document.getElementById('ticketDetails').innerText = `大人 ${info.sAdults}名 / 子ども ${info.sChildren}名`;
+                const padStartNo = String(info.startNo).padStart(3, '0');
+                const padEndNo = String(info.endNo).padStart(3, '0');
+                if (info.startNo === info.endNo) {
                     document.getElementById('ticketNo').innerHTML = `<span>No.${padStartNo}</span>`;
                 } else {
                     document.getElementById('ticketNo').innerHTML = `<span>No.${padStartNo} ～ No.${padEndNo}</span>`;
@@ -438,11 +449,11 @@
 
             // イベント用整理券の表示制御
             const eventTicketContainer = document.getElementById('eventTicketContainer');
-            if (eventJoin === 'both' || eventJoin === 'event_only') {
-                document.getElementById('eventTicketDetails').innerText = `大人 ${adults}名 / 子ども ${children}名`;
-                const padEvStartNo = String(eventStartNo).padStart(3, '0');
-                const padEvEndNo = String(eventEndNo).padStart(3, '0');
-                if (eventStartNo === eventEndNo) {
+            if (info.eventStartNo > 0) {
+                document.getElementById('eventTicketDetails').innerText = `大人 ${info.eAdults}名 / 子ども ${info.eChildren}名`;
+                const padEvStartNo = String(info.eventStartNo).padStart(3, '0');
+                const padEvEndNo = String(info.eventEndNo).padStart(3, '0');
+                if (info.eventStartNo === info.eventEndNo) {
                     document.getElementById('eventTicketNo').innerHTML = `<span>E-${padEvStartNo}</span>`;
                 } else {
                     document.getElementById('eventTicketNo').innerHTML = `<span>E-${padEvStartNo} ～ E-${padEvEndNo}</span>`;
@@ -462,20 +473,12 @@
             const savedTicketData = localStorage.getItem(STORAGE_KEY);
             if (savedTicketData) {
                 const info = JSON.parse(savedTicketData);
-                const canceledPeople = info.adults + info.children;
                 
-                const includeShokudo = (info.eventJoin === 'both' || info.eventJoin === 'shokudo_only');
-                const includeEvent = (info.eventJoin === 'both' || info.eventJoin === 'event_only');
-
-                const shokudoChange = includeShokudo ? -canceledPeople : 0;
-                const eventChange = includeEvent ? -canceledPeople : 0;
-
-                let eventJoinText = "両方";
-                if(info.eventJoin === 'shokudo_only') eventJoinText = "食堂のみ";
-                if(info.eventJoin === 'event_only') eventJoinText = "イベントのみ";
+                // キャンセル時はマイナス値にしてGASへ送信
+                const shokudoChange = info.startNo > 0 ? -(info.sAdults + info.sChildren) : 0;
+                const eventChange = info.eventStartNo > 0 ? -(info.eAdults + info.eChildren) : 0;
                 
-                // マイナス値で履歴を上書き追記
-                await updateCount("キャンセル", info.adults, info.children, shokudoChange, eventJoinText, eventChange);
+                await updateCount("キャンセル", info.sAdults, info.sChildren, info.eAdults, info.eChildren, shokudoChange, eventChange);
             }
 
             localStorage.removeItem(STORAGE_KEY);
@@ -484,6 +487,12 @@
             document.getElementById('issueBtn').innerText = "整理券を発行する";
             document.getElementById('issueBtn').disabled = false;
             
+            // セレクトボックスの初期値を再セット
+            document.getElementById('sAdultSelect').value = "1";
+            document.getElementById('sChildSelect').value = "2";
+            document.getElementById('eAdultSelect').value = "1";
+            document.getElementById('eChildSelect').value = "2";
+
             const data = await fetchCurrentData();
             if(data !== null) updateCounterDisplay(data.count);
             

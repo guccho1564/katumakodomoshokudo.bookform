@@ -57,7 +57,7 @@
         header nav ul li a:hover { color: #00f5d4; }
 
         /* ==========================================
-           3. メインビジュアル (暗めグラデーション)
+           3. メインビジュアル (PC環境)
            ========================================== */
         .hero { 
             background: linear-gradient(rgba(10, 20, 22, 0.3), rgba(15, 47, 54, 0.5)), url('katsumashokudo.jpg') no-repeat center center/cover; 
@@ -209,8 +209,35 @@
         
         footer { background-color: #060d0f; color: #64748b; text-align: center; padding: 25px 20px; margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.02); }
         
+        /* ==========================================
+           7. スマートフォン向け表示最適化（レスポンシブ）
+           ========================================== */
         @media screen and (max-width: 768px) {
-            .container { padding: 30px 15px; } .header-container { flex-direction: column; gap: 15px; padding: 15px; } header h1 { font-size: 1.2rem; } header nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; } .hero { height: auto; padding: 60px 15px; } .hero-content h2 { font-size: 1.4rem; } .counter-box { padding: 15px; } .status-title { font-size: 1.1rem; } .select-grid { gap: 15px; } .reserve-btn { font-size: 1.1rem; padding: 15px 20px; } .ticket-container { padding: 20px 15px; } .ticket-number { font-size: 1.8rem; } .history-grid { grid-template-columns: 1fr; }
+            .container { padding: 30px 15px; } 
+            .header-container { flex-direction: column; gap: 15px; padding: 15px; } 
+            header h1 { font-size: 1.2rem; } 
+            header nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; } 
+            
+            /* スマホで画像の縦横比・縮尺を綺麗に合わせるための調整 */
+            .hero { 
+                height: 320px; /* 高さを適度に固定し、画像が引き伸ばされすぎるのを防ぎます */
+                padding: 0 15px; 
+                background-position: center center;
+            } 
+            .hero-content { 
+                padding: 15px 20px; /* 文字の入った黒ボックスを小さくして、画像の見える面積を広げます */
+                width: 100%;
+            }
+            .hero-content h2 { font-size: 1.25rem; margin-bottom: 6px; } 
+            .hero-content p { font-size: 0.85rem; line-height: 1.5; }
+            
+            .counter-box { padding: 15px; } 
+            .status-title { font-size: 1.1rem; } 
+            .select-grid { gap: 15px; } 
+            .reserve-btn { font-size: 1.1rem; padding: 15px 20px; } 
+            .ticket-container { padding: 20px 15px; } 
+            .ticket-number { font-size: 1.8rem; } 
+            .history-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>

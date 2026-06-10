@@ -6,69 +6,76 @@
     <title>みんな笑顔のかつま子ども食堂 ＆ お楽しみイベント</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Helvetica Neue", Arial, sans-serif; color: #333; line-height: 1.6; background-color: #fffaf0; }
+        body { font-family: "Helvetica Neue", Arial, sans-serif; color: #2c3e50; line-height: 1.6; background-color: #f0f7f9; }
         .container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
         .bg-white { background-color: #ffffff; }
-        .section-title { text-align: center; margin-bottom: 40px; font-size: 1.8rem; color: #d35400; position: relative; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: #f39c12; margin: 12px auto 0; border-radius: 2px; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 1.8rem; color: #1e3a8a; position: relative; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: #06b6d4; margin: 12px auto 0; border-radius: 2px; }
         header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
         .header-container { max-width: 1000px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        header h1 { font-size: 1.4rem; color: #e67e22; }
+        header h1 { font-size: 1.4rem; color: #1e3a8a; }
         header nav ul { display: flex; list-style: none; gap: 20px; }
-        header nav ul li a { text-decoration: none; color: #555; font-weight: bold; font-size: 0.95rem; }
-        .hero { background: linear-gradient(rgba(243, 156, 18, 0.2), rgba(211, 84, 0, 0.4)), url('katsumashokudo.jpg') no-repeat center center/cover; height: 500px; display: flex; justify-content: center; align-items: center; color: #ffffff; text-align: center; padding: 0 20px; }
-        .hero-content { background: rgba(255, 255, 255, 0.9); color: #333; padding: 25px 35px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); max-width: 600px; }
-        .hero-content h2 { font-size: 1.8rem; margin-bottom: 10px; color: #d35400; }
+        header nav ul li a { text-decoration: none; color: #555; font-weight: bold; font-size: 0.95rem; transition: color 0.2s; }
+        header nav ul li a:hover { color: #0077b6; }
+        .hero { background: linear-gradient(rgba(14, 116, 144, 0.2), rgba(30, 58, 138, 0.4)), url('katsumashokudo.jpg') no-repeat center center/cover; height: 500px; display: flex; justify-content: center; align-items: center; color: #ffffff; text-align: center; padding: 0 20px; }
+        .hero-content { background: rgba(255, 255, 255, 0.95); color: #2c3e50; padding: 30px 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); max-width: 600px; }
+        .hero-content h2 { font-size: 1.9rem; margin-bottom: 12px; color: #1e3a8a; }
         
-        .counter-box { background-color: #fff3cd; border: 2px solid #ffeeba; padding: 25px; border-radius: 12px; text-align: center; margin: 0 auto 35px; max-width: 680px; }
-        .status-title { font-size: 1.25rem; font-weight: bold; }
-        .status-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; color: #fff; font-size: 0.9rem; margin-left: 5px; }
-        .badge-active { background-color: #28a745; } .badge-warning { background-color: #ff9f43; } .badge-full { background-color: #dc3545; }
-        .count-alert { color: #dc3545; font-size: 1.6rem; font-weight: bold; margin-top: 10px; }
+        /* カウンター：爽やかなミント＆ライトブルー系に変更 */
+        .counter-box { background-color: #e0f2fe; border: 2px solid #bae6fd; padding: 25px; border-radius: 12px; text-align: center; margin: 0 auto 35px; max-width: 680px; }
+        .status-title { font-size: 1.25rem; font-weight: bold; color: #0369a1; }
+        .status-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; color: #fff; font-size: 0.9rem; margin-left: 5px; font-weight: bold; }
+        .badge-active { background-color: #0ea5e9; } .badge-warning { background-color: #f59e0b; } .badge-full { background-color: #ef4444; }
+        .count-alert { color: #ef4444; font-size: 1.6rem; font-weight: bold; margin-top: 10px; }
         
         .action-wrapper { max-width: 680px; margin: 0 auto; text-align: center; }
         
-        /* 人数選択カードのデザイン（メニューごとに独立化） */
-        .menu-card { background: #ffffff; border: 2px solid #e0e0e0; padding: 25px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 25px; text-align: left; transition: all 0.3s; }
-        .menu-card.shokudo-card { border-left: 8px solid #e67e22; }
-        .menu-card.event-card { border-left: 8px solid #2980b9; background-color: #f4f9fd; }
-        .menu-card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
-        .shokudo-card .menu-card-title { color: #d35400; }
-        .event-card .menu-card-title { color: #21618c; }
+        /* 人数選択カード：ブルー＆エメラルドグリーンの爽やか配色 */
+        .menu-card { background: #ffffff; border: 2px solid #e2e8f0; padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 25px; text-align: left; transition: all 0.3s; }
+        .menu-card.shokudo-card { border-left: 8px solid #0284c7; background-color: #f8fafc; }
+        .menu-card.event-card { border-left: 8px solid #0d9488; background-color: #f0fdfa; }
+        .menu-card-title { font-size: 1.25rem; font-weight: bold; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+        .shokudo-card .menu-card-title { color: #0369a1; }
+        .event-card .menu-card-title { color: #0f766e; }
         
         .select-grid { display: flex; gap: 20px; flex-wrap: wrap; }
         .select-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 140px; }
-        .select-group label { font-weight: bold; color: #555; font-size: 0.95rem; }
-        .select-group select { font-size: 1.1rem; padding: 10px; border-radius: 8px; border: 2px solid #ddd; background-color: #fff; cursor: pointer; width: 100%; }
+        .select-group label { font-weight: bold; color: #475569; font-size: 0.95rem; }
+        .select-group select { font-size: 1.1rem; padding: 10px; border-radius: 8px; border: 2px solid #cbd5e1; background-color: #fff; cursor: pointer; width: 100%; color: #334155; }
         
-        .reserve-btn { background-color: #e67e22; color: #ffffff; border: none; padding: 18px 40px; font-size: 1.3rem; font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3); transition: all 0.3s; width: 100%; max-width: 400px; margin-top: 10px; }
-        .reserve-btn:hover { background-color: #d35400; transform: translateY(-2px); }
+        /* 発行ボタン：涼しげで力強いディープブルー */
+        .reserve-btn { background-color: #0077b6; color: #ffffff; border: none; padding: 18px 40px; font-size: 1.3rem; font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3); transition: all 0.3s; width: 100%; max-width: 400px; margin-top: 10px; }
+        .reserve-btn:hover { background-color: #0096c7; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 119, 182, 0.4); }
         
         .tickets-wrapper { display: flex; flex-direction: column; gap: 20px; align-items: center; }
-        .ticket-container { background: #ffffff; border: 3px dashed #d35400; border-radius: 15px; padding: 30px; width: 100%; max-width: 450px; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: center; }
-        .ticket-header { font-size: 1.1rem; color: #7f8c8d; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
-        .ticket-details { font-size: 1.1rem; font-weight: bold; background: #fcf1e4; color: #d35400; padding: 6px 15px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
-        .ticket-number { font-size: 2.5rem; font-weight: bold; color: #333; margin: 15px 0; letter-spacing: 1px; line-height: 1.3; }
-        .ticket-number span { color: #d35400; }
-        .ticket-notice { font-size: 0.9rem; color: #c0392b; background: #fdeed0; padding: 10px; border-radius: 6px; font-weight: bold; margin-top: 15px; }
+        .ticket-container { background: #ffffff; border: 3px dashed #0284c7; border-radius: 15px; padding: 30px; width: 100%; max-width: 450px; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
+        .ticket-header { font-size: 1.1rem; color: #64748b; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px; font-weight: bold; }
         
-        .event-ticket { border-color: #2980b9; }
-        .event-ticket .ticket-header { color: #2980b9; }
-        .event-ticket .ticket-details { background: #eaf2f8; color: #2980b9; }
-        .event-ticket .ticket-number span { color: #2980b9; }
-        .event-ticket .ticket-notice { color: #1f618d; background: #eaf2f8; }
+        /* 食堂チケット：爽やかブルー */
+        .ticket-details { font-size: 1.1rem; font-weight: bold; background: #e0f2fe; color: #0369a1; padding: 6px 15px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+        .ticket-number { font-size: 2.5rem; font-weight: bold; color: #1e293b; margin: 15px 0; letter-spacing: 1px; line-height: 1.3; }
+        .ticket-number span { color: #0284c7; }
+        .ticket-notice { font-size: 0.9rem; color: #b91c1c; background: #fee2e2; padding: 10px; border-radius: 6px; font-weight: bold; margin-top: 15px; }
         
-        .cancel-btn { background-color: #ffffff; color: #95a5a6; border: 2px solid #bdc3c7; padding: 10px 20px; font-size: 0.95rem; font-weight: bold; border-radius: 50px; cursor: pointer; margin-top: 20px; transition: all 0.3s; }
-        .cancel-btn:hover { background-color: #fdf2f2; color: #e74c3c; border-color: #e74c3c; }
+        /* イベントチケット：爽やかミントグリーン */
+        .event-ticket { border-color: #0d9488; }
+        .event-ticket .ticket-header { color: #0f766e; }
+        .event-ticket .ticket-details { background: #ccfbf1; color: #0f766e; }
+        .event-ticket .ticket-number span { color: #0d9488; }
+        .event-ticket .ticket-notice { color: #0369a1; background: #e0f2fe; }
         
-        .closed-message-box { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 0.95rem; }
+        .cancel-btn { background-color: #ffffff; color: #64748b; border: 2px solid #cbd5e1; padding: 10px 20px; font-size: 0.95rem; font-weight: bold; border-radius: 50px; cursor: pointer; margin-top: 20px; transition: all 0.3s; }
+        .cancel-btn:hover { background-color: #fff1f2; color: #e11d48; border-color: #fda4af; }
+        
+        .closed-message-box { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 0.95rem; }
         .info-list { margin: 20px auto 0; list-style-type: none; max-width: 600px; text-align: left; }
-        .info-list li { padding: 15px; background: #ffffff; margin-bottom: 12px; border-left: 6px solid #ff9f43; border-radius: 4px; }
+        .info-list li { padding: 15px; background: #ffffff; margin-bottom: 12px; border-left: 6px solid #0ea5e9; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
         .history-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .history-card { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
+        .history-card { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .history-img { height: 200px; background-size: cover; background-position: center; }
         .history-content { padding: 20px; }
-        footer { background-color: #34495e; color: #ffffff; text-align: center; padding: 25px 20px; margin-top: 50px; }
+        .history-content h3 { color: #1e3a8a; margin-bottom: 8px; }
+        footer { background-color: #1e3a8a; color: #ffffff; text-align: center; padding: 25px 20px; margin-top: 50px; font-weight: 50px; }
         
         @media screen and (max-width: 768px) {
             .container { padding: 30px 15px; } .header-container { flex-direction: column; gap: 15px; padding: 15px; } header h1 { font-size: 1.2rem; } header nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; } .hero { height: auto; padding: 60px 15px; } .hero-content h2 { font-size: 1.4rem; } .counter-box { padding: 15px; } .status-title { font-size: 1.1rem; } .select-grid { gap: 15px; } .reserve-btn { font-size: 1.1rem; padding: 15px 20px; } .ticket-container { padding: 20px 15px; } .ticket-number { font-size: 1.8rem; } .history-grid { grid-template-columns: 1fr; }
@@ -94,7 +101,7 @@
         <div class="hero-content">
             <h2>みんなで食べると、もっと美味しい！</h2>
             <p>食堂とイベント、それぞれ参加する人の人数を選んで整理券をもらってね！</p>
-            <p>イベントだけの参加もOKだよ！</p>
+            <p style="margin-top: 5px; color: #0077b6; font-weight: bold;">イベントだけの参加もOKだよ！</p>
         </div>
     </section>
 
@@ -103,7 +110,7 @@
         <div style="text-align: center; max-width: 800px; margin: 0 auto;">
             <p>地域の子どもたちやご家族が安心して過ごせる居場所です。美味しいご飯のあとには楽しいイベントも開催！</p>
             <ul class="info-list">
-                <li><strong>開催日時</strong> 2ヶ月/回開催　第2日曜日 11:00〜</li>
+                <li><strong>開催日時</strong> 2ヶ月/回開催 第2日曜日 11:00〜</li>
                 <li><strong>開催場所</strong> サンウィング熊毛 [住所]周南市中村10803-2</li>
                 <li><strong>参加費</strong> 子ども：無料 / 大人：200円</li>
             </ul>
@@ -129,7 +136,6 @@
                     【食堂は満員】定員の300人に達したため、食堂の受付は終了しました。イベントの予約は可能です！
                 </div>
 
-                <!-- 1. 食堂の人数選択カード -->
                 <div class="menu-card shokudo-card" id="shokudoCard">
                     <div class="menu-card-title">🍙 食堂に参加する人数</div>
                     <div class="select-grid">
@@ -150,7 +156,7 @@
                             </select>
                         </div>
                         <div class="select-group">
-                            <label for="sChildSelect">子どもの人数</label>
+                            <label interpreter="sChildSelect">子どもの人数</label>
                             <select id="sChildSelect">
                                 <option value="0">0名</option>
                                 <option value="1">1名</option>
@@ -168,7 +174,6 @@
                     </div>
                 </div>
 
-                <!-- 2. イベントの人数選択カード -->
                 <div class="menu-card event-card">
                     <div class="menu-card-title">🎈 お楽しみイベントに参加する人数</div>
                     <div class="select-grid">
@@ -201,13 +206,11 @@
                 <button class="reserve-btn" id="issueBtn" onclick="issueSeparatedTicket()">整理券を発行する</button>
             </div>
 
-            <!-- 整理券表示エリア -->
             <div id="ticketsDisplayArea" style="display: none; text-align: center;">
                 <div class="tickets-wrapper">
                     
-                    <!-- 食堂用整理券 -->
                     <div class="ticket-container" id="shokudoTicketContainer" style="display: none;">
-                        <div class="ticket-header">🍙 みんなの笑顔子ども食堂 参加整理券</div>
+                        <div class="ticket-header">🍙 かつま子ども食堂 参加整理券</div>
                         <div class="ticket-details" id="ticketDetails">大人 0名 / 子ども 0名</div>
                         <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">食堂のご予約番号</p>
                         <div class="ticket-number" id="ticketNo">No.000</div>
@@ -216,7 +219,6 @@
                         </div>
                     </div>
 
-                    <!-- イベント用整理券 -->
                     <div class="ticket-container event-ticket" id="eventTicketContainer" style="display: none;">
                         <div class="ticket-header">🎈 お楽しみイベント 参加整理券</div>
                         <div class="ticket-details" id="eventTicketDetails">大人 0名 / 子ども 0名</div>
@@ -257,14 +259,11 @@
         <p>&copy; 2026 みんなの笑顔子ども食堂. All Rights Reserved.</p>
     </footer>
 
-    <!-- ==========================================
-       ★ プログラム通信エリア ★
-       ========================================== -->
     <script>
-        // ★新しくデプロイして発行されたURLに貼り換えてください
         const GAS_URL = "https://script.google.com/macros/s/AKfycbx7ErHXNRE9fjSQaanKzfajgLXTMKrhyRgTQoNjUw_Zf-T0eoJNagWgHAhnvn3LbdLQ/exec";
         
-        const MAX_CAPACITY = 100; 
+        // ★上限数をご要望どおり「300」に設定
+        const MAX_CAPACITY = 300; 
         const EVENT_ID = "event_2026_06_separated_options"; 
         const STORAGE_KEY = 'shokudo_ticket_' + EVENT_ID;
 
@@ -334,7 +333,6 @@
                 statusBadge.className = "status-badge badge-full";
                 countAlert.style.display = "none";
                 
-                // 食堂をロック（選択を0名に固定）
                 document.getElementById('sAdultSelect').value = "0";
                 document.getElementById('sChildSelect').value = "0";
                 shokudoCard.style.opacity = "0.4";
@@ -350,7 +348,6 @@
                 remainingCount.innerText = remaining;
                 shokudoClosedMsg.style.display = "none";
                 
-                // ロック解除
                 shokudoCard.style.opacity = "1";
                 shokudoCard.style.pointerEvents = "auto";
             } else {
@@ -359,19 +356,16 @@
                 countAlert.style.display = "none";
                 shokudoClosedMsg.style.display = "none";
                 
-                // ロック解除
                 shokudoCard.style.opacity = "1";
                 shokudoCard.style.pointerEvents = "auto";
             }
         }
 
         async function issueSeparatedTicket() {
-            // 食堂の選択人数
             const sAdults = Number(document.getElementById('sAdultSelect').value);
             const sChildren = Number(document.getElementById('sChildSelect').value);
             const totalShokudo = sAdults + sChildren;
 
-            // イベントの選択人数
             const eAdults = Number(document.getElementById('eAdultSelect').value);
             const eChildren = Number(document.getElementById('eChildSelect').value);
             const totalEvent = eAdults + eChildren;
@@ -390,14 +384,12 @@
             const currentCount = currentData.count;
             const currentEventCount = currentData.eventCount;
 
-            // 発行される番号の計算
             const startNo = totalShokudo > 0 ? currentCount + 1 : 0;
             const endNo = totalShokudo > 0 ? currentCount + totalShokudo : 0;
 
             const eventStartNo = totalEvent > 0 ? currentEventCount + 1 : 0;
             const eventEndNo = totalEvent > 0 ? currentEventCount + totalEvent : 0;
 
-            // 食堂の300人上限チェック
             if (totalShokudo > 0 && endNo > MAX_CAPACITY) {
                 const currentRemaining = MAX_CAPACITY - currentCount;
                 if (currentRemaining <= 0) {
@@ -412,7 +404,6 @@
             document.getElementById('issueBtn').innerText = "処理中...";
             document.getElementById('issueBtn').disabled = true;
 
-            // GASへデータを送信（増減値は選択された人数そのもの）
             const newData = await updateCount("予約", sAdults, sChildren, eAdults, eChildren, totalShokudo, totalEvent);
             
             if (newData === null) {
@@ -422,7 +413,6 @@
                 return;
             }
 
-            // ローカルストレージに保存するオブジェクト
             const ticketData = { 
                 sAdults: sAdults, sChildren: sChildren, startNo: startNo, endNo: endNo,
                 eAdults: eAdults, eChildren: eChildren, eventStartNo: eventStartNo, eventEndNo: eventEndNo
@@ -442,7 +432,6 @@
             document.getElementById('actionWrapper').style.display = "none";
             const ticketsDisplayArea = document.getElementById('ticketsDisplayArea');
             
-            // 食堂用整理券の表示制御
             const shokudoTicketContainer = document.getElementById('shokudoTicketContainer');
             if (info.startNo > 0) {
                 document.getElementById('ticketDetails').innerText = `大人 ${info.sAdults}名 / 子ども ${info.sChildren}名`;
@@ -458,7 +447,6 @@
                 shokudoTicketContainer.style.display = "none";
             }
 
-            // イベント用整理券の表示制御
             const eventTicketContainer = document.getElementById('eventTicketContainer');
             if (info.eventStartNo > 0) {
                 document.getElementById('eventTicketDetails').innerText = `大人 ${info.eAdults}名 / 子ども ${info.eChildren}名`;
@@ -485,7 +473,6 @@
             if (savedTicketData) {
                 const info = JSON.parse(savedTicketData);
                 
-                // キャンセル時はマイナス値にしてGASへ送信
                 const shokudoChange = info.startNo > 0 ? -(info.sAdults + info.sChildren) : 0;
                 const eventChange = info.eventStartNo > 0 ? -(info.eAdults + info.eChildren) : 0;
                 
@@ -498,7 +485,6 @@
             document.getElementById('issueBtn').innerText = "整理券を発行する";
             document.getElementById('issueBtn').disabled = false;
             
-            // セレクトボックスの初期値を再セット
             document.getElementById('sAdultSelect').value = "1";
             document.getElementById('sChildSelect').value = "2";
             document.getElementById('eAdultSelect').value = "1";

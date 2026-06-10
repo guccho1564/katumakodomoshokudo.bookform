@@ -5,77 +5,209 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>みんな笑顔のかつま子ども食堂 ＆ お楽しみイベント</title>
     <style>
+        /* ==========================================
+           1. 基本設定・共通スタイル (ダークミク配色)
+           ========================================== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Helvetica Neue", Arial, sans-serif; color: #2c3e50; line-height: 1.6; background-color: #f0f7f9; }
+        body { 
+            font-family: "Helvetica Neue", Arial, sans-serif; 
+            color: #e2e8f0; /* 明るいグレー文字 */
+            line-height: 1.6; 
+            background-color: #0a1416; /* 深海のような極暗ターコイズブラック */
+        }
         .container { max-width: 1000px; margin: 0 auto; padding: 50px 20px; }
-        .bg-white { background-color: #ffffff; }
-        .section-title { text-align: center; margin-bottom: 40px; font-size: 1.8rem; color: #1e3a8a; position: relative; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: #06b6d4; margin: 12px auto 0; border-radius: 2px; }
-        header { background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-        .header-container { max-width: 1000px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        header h1 { font-size: 1.4rem; color: #1e3a8a; }
-        header nav ul { display: flex; list-style: none; gap: 20px; }
-        header nav ul li a { text-decoration: none; color: #555; font-weight: bold; font-size: 0.95rem; transition: color 0.2s; }
-        header nav ul li a:hover { color: #0077b6; }
-        .hero { background: linear-gradient(rgba(14, 116, 144, 0.2), rgba(30, 58, 138, 0.4)), url('katsumashokudo.jpg') no-repeat center center/cover; height: 500px; display: flex; justify-content: center; align-items: center; color: #ffffff; text-align: center; padding: 0 20px; }
-        .hero-content { background: rgba(255, 255, 255, 0.95); color: #2c3e50; padding: 30px 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); max-width: 600px; }
-        .hero-content h2 { font-size: 1.9rem; margin-bottom: 12px; color: #1e3a8a; }
         
-        /* カウンター：爽やかなミント＆ライトブルー系に変更 */
-        .counter-box { background-color: #e0f2fe; border: 2px solid #bae6fd; padding: 25px; border-radius: 12px; text-align: center; margin: 0 auto 35px; max-width: 680px; }
-        .status-title { font-size: 1.25rem; font-weight: bold; color: #0369a1; }
+        /* 元の「白い背景セクション」を暗いミントブラックに変更 */
+        .bg-white { background-color: #0f1f22; }
+        
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            font-size: 1.8rem; 
+            color: #00f5d4; /* 鮮やかなエメラルドグリーン */
+            text-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+            position: relative; 
+        }
+        .section-title::after { 
+            content: ''; 
+            display: block; 
+            width: 60px; 
+            height: 4px; 
+            background: #ff2a85; /* アクセント：ミクピンク */
+            margin: 12px auto 0; 
+            border-radius: 2px; 
+            box-shadow: 0 0 8px rgba(255, 42, 133, 0.6);
+        }
+
+        /* ==========================================
+           2. ヘッダー (RGBA透過)
+           ========================================== */
+        header { 
+            background-color: rgba(15, 31, 34, 0.85); 
+            backdrop-filter: blur(10px); /* すりガラス効果 */
+            box-shadow: 0 2px 15px rgba(0,0,0,0.5), inset 0 -1px 0 rgba(0, 245, 212, 0.1); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+        }
+        .header-container { max-width: 1000px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 1.4rem; color: #00f5d4; text-shadow: 0 0 8px rgba(0, 245, 212, 0.2); }
+        header nav ul { display: flex; list-style: none; gap: 20px; }
+        header nav ul li a { text-decoration: none; color: #94a3b8; font-weight: bold; font-size: 0.95rem; transition: color 0.2s; }
+        header nav ul li a:hover { color: #00f5d4; }
+
+        /* ==========================================
+           3. メインビジュアル (暗めグラデーション)
+           ========================================== */
+        .hero { 
+            background: linear-gradient(rgba(10, 20, 22, 0.6), rgba(15, 47, 54, 0.85)), url('katsumashokudo.jpg') no-repeat center center/cover; 
+            height: 500px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            color: #ffffff; 
+            text-align: center; 
+            padding: 0 20px; 
+        }
+        .hero-content { 
+            background: rgba(13, 27, 30, 0.85); /* 暗いターコイズRGBA */
+            border: 1px solid rgba(0, 245, 212, 0.2);
+            color: #e2e8f0; 
+            padding: 25px 35px; 
+            border-radius: 15px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5); 
+            max-width: 600px; 
+        }
+        .hero-content h2 { font-size: 1.8rem; margin-bottom: 10px; color: #00f5d4; }
+        
+        /* ==========================================
+           4. カウンターエリア (透過ネオン)
+           ========================================== */
+        .counter-box { 
+            background-color: rgba(0, 180, 216, 0.05); /* 非常に薄いターコイズブルー */
+            border: 2px solid rgba(0, 180, 216, 0.3); 
+            padding: 25px; 
+            border-radius: 12px; 
+            text-align: center; 
+            margin: 0 auto 35px; 
+            max-width: 680px; 
+        }
+        .status-title { font-size: 1.25rem; font-weight: bold; color: #e2e8f0; }
         .status-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; color: #fff; font-size: 0.9rem; margin-left: 5px; font-weight: bold; }
-        .badge-active { background-color: #0ea5e9; } .badge-warning { background-color: #f59e0b; } .badge-full { background-color: #ef4444; }
-        .count-alert { color: #ef4444; font-size: 1.6rem; font-weight: bold; margin-top: 10px; }
+        .badge-active { background-color: #00b4d8; box-shadow: 0 0 10px rgba(0, 180, 216, 0.5); } 
+        .badge-warning { background-color: #ff2a85; box-shadow: 0 0 10px rgba(255, 42, 133, 0.5); } 
+        .badge-full { background-color: #ef4444; }
+        .count-alert { color: #ff2a85; font-size: 1.6rem; font-weight: bold; margin-top: 10px; text-shadow: 0 0 10px rgba(255, 42, 133, 0.3); }
         
         .action-wrapper { max-width: 680px; margin: 0 auto; text-align: center; }
         
-        /* 人数選択カード：ブルー＆エメラルドグリーンの爽やか配色 */
-        .menu-card { background: #ffffff; border: 2px solid #e2e8f0; padding: 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 25px; text-align: left; transition: all 0.3s; }
-        .menu-card.shokudo-card { border-left: 8px solid #0284c7; background-color: #f8fafc; }
-        .menu-card.event-card { border-left: 8px solid #0d9488; background-color: #f0fdfa; }
-        .menu-card-title { font-size: 1.25rem; font-weight: bold; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-        .shokudo-card .menu-card-title { color: #0369a1; }
-        .event-card .menu-card-title { color: #0f766e; }
+        /* ==========================================
+           5. 人数選択カード (暗いターコイズ ＆ 暗いエメラルド)
+           ========================================== */
+        .menu-card { 
+            background: rgba(22, 42, 46, 0.9); /* しっかりしたダークRGBA */
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            padding: 25px; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+            margin-bottom: 25px; 
+            text-align: left; 
+            transition: all 0.3s; 
+        }
+        /* 食堂：暗めのターコイズブルーライン */
+        .menu-card.shokudo-card { border-left: 8px solid #008b8b; box-shadow: inset 5px 0 20px rgba(0, 139, 139, 0.05); }
+        /* イベント：暗めのエメラルドグリーンライン */
+        .menu-card.event-card { border-left: 8px solid #0f766e; background-color: rgba(15, 37, 34, 0.9); }
         
+        .menu-card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .shokudo-card .menu-card-title { color: #00b4d8; }
+        .event-card .menu-card-title { color: #00f5d4; }
+        
+        /* セレクトボックス (ダーク仕様) */
         .select-grid { display: flex; gap: 20px; flex-wrap: wrap; }
         .select-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 140px; }
-        .select-group label { font-weight: bold; color: #475569; font-size: 0.95rem; }
-        .select-group select { font-size: 1.1rem; padding: 10px; border-radius: 8px; border: 2px solid #cbd5e1; background-color: #fff; cursor: pointer; width: 100%; color: #334155; }
+        .select-group label { font-weight: bold; color: #94a3b8; font-size: 0.95rem; }
+        .select-group select { 
+            font-size: 1.1rem; 
+            padding: 10px; 
+            border-radius: 8px; 
+            border: 2px solid rgba(0, 245, 212, 0.2); 
+            background-color: #0a1416; 
+            color: #e2e8f0;
+            cursor: pointer; 
+            width: 100%; 
+            outline: none;
+        }
+        .select-group select:focus { border-color: #00f5d4; }
         
-        /* 発行ボタン：涼しげで力強いディープブルー */
-        .reserve-btn { background-color: #0077b6; color: #ffffff; border: none; padding: 18px 40px; font-size: 1.3rem; font-weight: bold; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3); transition: all 0.3s; width: 100%; max-width: 400px; margin-top: 10px; }
-        .reserve-btn:hover { background-color: #0096c7; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 119, 182, 0.4); }
+        /* 発行ボタン (サイバーターコイズ) */
+        .reserve-btn { 
+            background-color: #00b4d8; 
+            color: #ffffff; 
+            border: none; 
+            padding: 18px 40px; 
+            font-size: 1.3rem; 
+            font-weight: bold; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4); 
+            transition: all 0.3s; 
+            width: 100%; 
+            max-width: 400px; 
+            margin-top: 10px; 
+        }
+        .reserve-btn:hover { background-color: #00d4ff; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 180, 216, 0.6); }
         
+        /* ==========================================
+           6. 整理券エリア (サイバーネオンチケット)
+           ========================================== */
         .tickets-wrapper { display: flex; flex-direction: column; gap: 20px; align-items: center; }
-        .ticket-container { background: #ffffff; border: 3px dashed #0284c7; border-radius: 15px; padding: 30px; width: 100%; max-width: 450px; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; }
-        .ticket-header { font-size: 1.1rem; color: #64748b; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px; font-weight: bold; }
         
-        /* 食堂チケット：爽やかブルー */
-        .ticket-details { font-size: 1.1rem; font-weight: bold; background: #e0f2fe; color: #0369a1; padding: 6px 15px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
-        .ticket-number { font-size: 2.5rem; font-weight: bold; color: #1e293b; margin: 15px 0; letter-spacing: 1px; line-height: 1.3; }
-        .ticket-number span { color: #0284c7; }
-        .ticket-notice { font-size: 0.9rem; color: #b91c1c; background: #fee2e2; padding: 10px; border-radius: 6px; font-weight: bold; margin-top: 15px; }
+        /* 食堂用チケット */
+        .ticket-container { 
+            background: #112226; 
+            border: 3px dashed #00b4d8; 
+            border-radius: 15px; 
+            padding: 30px; 
+            width: 100%; 
+            max-width: 450px; 
+            position: relative; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
+            text-align: center; 
+        }
+        .ticket-header { font-size: 1.1rem; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; margin-bottom: 15px; }
+        .ticket-details { font-size: 1.1rem; font-weight: bold; background: rgba(0, 180, 216, 0.15); color: #00b4d8; padding: 6px 15px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+        .ticket-number { font-size: 2.5rem; font-weight: bold; color: #ffffff; margin: 15px 0; letter-spacing: 1px; line-height: 1.3; }
+        .ticket-number span { color: #00b4d8; text-shadow: 0 0 10px rgba(0, 180, 216, 0.5); }
+        .ticket-notice { font-size: 0.9rem; color: #fca5a5; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); padding: 10px; border-radius: 6px; font-weight: bold; margin-top: 15px; }
         
-        /* イベントチケット：爽やかミントグリーン */
-        .event-ticket { border-color: #0d9488; }
-        .event-ticket .ticket-header { color: #0f766e; }
-        .event-ticket .ticket-details { background: #ccfbf1; color: #0f766e; }
-        .event-ticket .ticket-number span { color: #0d9488; }
-        .event-ticket .ticket-notice { color: #0369a1; background: #e0f2fe; }
+        /* イベント用チケット */
+        .event-ticket { border-color: #00f5d4; }
+        .event-ticket .ticket-header { color: #00f5d4; }
+        .event-ticket .ticket-details { background: rgba(0, 245, 212, 0.15); color: #00f5d4; }
+        .event-ticket .ticket-number span { color: #00f5d4; text-shadow: 0 0 10px rgba(0, 245, 212, 0.5); }
+        .event-ticket .ticket-notice { color: #00b4d8; background: rgba(0, 180, 216, 0.1); border-color: rgba(0, 180, 216, 0.2); }
         
-        .cancel-btn { background-color: #ffffff; color: #64748b; border: 2px solid #cbd5e1; padding: 10px 20px; font-size: 0.95rem; font-weight: bold; border-radius: 50px; cursor: pointer; margin-top: 20px; transition: all 0.3s; }
-        .cancel-btn:hover { background-color: #fff1f2; color: #e11d48; border-color: #fda4af; }
+        /* キャンセルボタン */
+        .cancel-btn { background-color: transparent; color: #64748b; border: 2px solid #334155; padding: 10px 20px; font-size: 0.95rem; font-weight: bold; border-radius: 50px; cursor: pointer; margin-top: 20px; transition: all 0.3s; }
+        .cancel-btn:hover { background-color: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: #ef4444; }
         
-        .closed-message-box { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 0.95rem; }
+        /* 満員メッセージボックス */
+        .closed-message-box { background: rgba(239, 68, 68, 0.1); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.2); padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 0.95rem; }
+        
+        /* リスト紹介エリア */
         .info-list { margin: 20px auto 0; list-style-type: none; max-width: 600px; text-align: left; }
-        .info-list li { padding: 15px; background: #ffffff; margin-bottom: 12px; border-left: 6px solid #0ea5e9; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .info-list li { padding: 15px; background: #132528; margin-bottom: 12px; border-left: 6px solid #00f5d4; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .info-list li strong { color: #00f5d4; }
+
+        /* 開催履歴 */
         .history-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .history-card { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .history-img { height: 200px; background-size: cover; background-position: center; }
+        .history-card { background: #112226; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.03); }
+        .history-img { height: 200px; background-size: cover; background-position: center; opacity: 0.85; }
         .history-content { padding: 20px; }
-        .history-content h3 { color: #1e3a8a; margin-bottom: 8px; }
-        footer { background-color: #1e3a8a; color: #ffffff; text-align: center; padding: 25px 20px; margin-top: 50px; font-weight: 50px; }
+        .history-content h3 { color: #00f5d4; margin-bottom: 5px; }
+        
+        footer { background-color: #060d0f; color: #64748b; text-align: center; padding: 25px 20px; margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.02); }
         
         @media screen and (max-width: 768px) {
             .container { padding: 30px 15px; } .header-container { flex-direction: column; gap: 15px; padding: 15px; } header h1 { font-size: 1.2rem; } header nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; } .hero { height: auto; padding: 60px 15px; } .hero-content h2 { font-size: 1.4rem; } .counter-box { padding: 15px; } .status-title { font-size: 1.1rem; } .select-grid { gap: 15px; } .reserve-btn { font-size: 1.1rem; padding: 15px 20px; } .ticket-container { padding: 20px 15px; } .ticket-number { font-size: 1.8rem; } .history-grid { grid-template-columns: 1fr; }
@@ -101,7 +233,7 @@
         <div class="hero-content">
             <h2>みんなで食べると、もっと美味しい！</h2>
             <p>食堂とイベント、それぞれ参加する人の人数を選んで整理券をもらってね！</p>
-            <p style="margin-top: 5px; color: #0077b6; font-weight: bold;">イベントだけの参加もOKだよ！</p>
+            <p style="margin-top: 5px; color: #00f5d4; font-weight: bold;">イベントだけの参加もOKだよ！</p>
         </div>
     </section>
 
@@ -156,7 +288,7 @@
                             </select>
                         </div>
                         <div class="select-group">
-                            <label interpreter="sChildSelect">子どもの人数</label>
+                            <label for="sChildSelect">子どもの人数</label>
                             <select id="sChildSelect">
                                 <option value="0">0名</option>
                                 <option value="1">1名</option>
@@ -202,7 +334,7 @@
                     </div>
                 </div>
 
-                <p style="margin-bottom: 15px; font-weight: bold; color: #555;">内容を確認してボタンを押すと、整理券が発行されます。</p>
+                <p style="margin-bottom: 15px; font-weight: bold; color: #94a3b8;">内容を確認してボタンを押すと、整理券が発行されます。</p>
                 <button class="reserve-btn" id="issueBtn" onclick="issueSeparatedTicket()">整理券を発行する</button>
             </div>
 
@@ -210,9 +342,9 @@
                 <div class="tickets-wrapper">
                     
                     <div class="ticket-container" id="shokudoTicketContainer" style="display: none;">
-                        <div class="ticket-header">🍙 かつま子ども食堂 参加整理券</div>
+                        <div class="ticket-header">🍙 みんなの笑顔子ども食堂 参加整理券</div>
                         <div class="ticket-details" id="ticketDetails">大人 0名 / 子ども 0名</div>
-                        <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">食堂のご予約番号</p>
+                        <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 10px;">食堂のご予約番号</p>
                         <div class="ticket-number" id="ticketNo">No.000</div>
                         <div class="ticket-notice">
                             ⚠️ 画面をスクリーンショットするか、メモをして受付で見せてね！
@@ -222,7 +354,7 @@
                     <div class="ticket-container event-ticket" id="eventTicketContainer" style="display: none;">
                         <div class="ticket-header">🎈 お楽しみイベント 参加整理券</div>
                         <div class="ticket-details" id="eventTicketDetails">大人 0名 / 子ども 0名</div>
-                        <p style="font-size: 0.9rem; color: #555; margin-top: 10px;">イベント整理番号</p>
+                        <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 10px;">イベント整理番号</p>
                         <div class="ticket-number" id="eventTicketNo"><span>E-000</span></div>
                         <div class="ticket-notice">
                             イベント会場の入り口でこちらの番号をご提示ください。
@@ -242,14 +374,14 @@
                 <div class="history-img" style="background-image: url('May.jpg');"></div>
                 <div class="history-content">
                     <h3>2026年4月：春の地元野菜カレーライス</h3>
-                    <p>山口県産の無農薬野菜をたっぷり使ったカレーです。みんなでワイワイ美味しく食べました！</p>
+                    <p style="color: #94a3b8;">山口県産の無農薬野菜をたっぷり使ったカレーです。みんなでワイワイ美味しく食べました！</p>
                 </div>
             </div>
             <div class="history-card">
                 <div class="history-img" style="background-image: url('March.jpg');"></div>
                 <div class="history-content">
                     <h3>2026年2月：栄養満点！和食プレート</h3>
-                    <p>体に優しいオーガニック食材を取り入れ、栄養バランスを考えた和食定食を楽しみました。</p>
+                    <p style="color: #94a3b8;">体に優しいオーガニック食材を取り入れ、栄養バランスを考えた和食定食を楽しみました。</p>
                 </div>
             </div>
         </div>
@@ -262,8 +394,7 @@
     <script>
         const GAS_URL = "https://script.google.com/macros/s/AKfycbx7ErHXNRE9fjSQaanKzfajgLXTMKrhyRgTQoNjUw_Zf-T0eoJNagWgHAhnvn3LbdLQ/exec";
         
-        // ★上限数をご要望どおり「300」に設定
-        const MAX_CAPACITY = 300; 
+        const MAX_CAPACITY = 100; 
         const EVENT_ID = "event_2026_06_separated_options"; 
         const STORAGE_KEY = 'shokudo_ticket_' + EVENT_ID;
 
@@ -335,7 +466,7 @@
                 
                 document.getElementById('sAdultSelect').value = "0";
                 document.getElementById('sChildSelect').value = "0";
-                shokudoCard.style.opacity = "0.4";
+                shokudoCard.style.opacity = "0.25";
                 shokudoCard.style.pointerEvents = "none";
                 
                 if(!localStorage.getItem(STORAGE_KEY)) {

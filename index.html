@@ -472,7 +472,7 @@
     <script>
         const GAS_URL = "https://script.google.com/macros/s/AKfycbywgid46NCUaRMowP1e-tGB_YzlRWh6atAm0BF7pa_3Woa6Tj8-f_U0sD-vmPhX5-mjrw/exec";
         
-        const MAX_CAPACITY = 100; 
+        const MAX_CAPACITY = 300; 
         const EVENT_ID = "event_2026_07_separated_options"; 
         const STORAGE_KEY = 'shokudo_ticket_' + EVENT_ID;
 
@@ -553,7 +553,7 @@
                 if(!localStorage.getItem(STORAGE_KEY)) {
                     shokudoClosedMsg.style.display = "block";
                 }
-            } else if (remaining <= 100) {
+            } else if (remaining <= 200) {
                 statusBadge.innerText = "食堂残りわずか！";
                 statusBadge.className = "status-badge badge-warning";
                 countAlert.style.display = "block";

@@ -102,7 +102,7 @@
         .action-wrapper { max-width: 680px; margin: 0 auto; text-align: center; }
         
         /* ==========================================
-           5. 人数選択カード (暗いターコイズ ＆ 暗いエメラルド)
+           5. 入力・人数選択カード
            ========================================== */
         .menu-card { 
             background: rgba(22, 42, 46, 0.9); /* しっかりしたダークRGBA */
@@ -114,15 +114,36 @@
             text-align: left; 
             transition: all 0.3s; 
         }
+
+        /* 予約者情報：暗めのミクピンクライン */
+        .menu-card.info-card { border-left: 8px solid #ff2a85; background-color: rgba(35, 20, 30, 0.9); }
         /* 食堂：暗めのターコイズブルーライン */
         .menu-card.shokudo-card { border-left: 8px solid #008b8b; box-shadow: inset 5px 0 20px rgba(0, 139, 139, 0.05); }
         /* イベント：暗めのエメラルドグリーンライン */
         .menu-card.event-card { border-left: 8px solid #0f766e; background-color: rgba(15, 37, 34, 0.9); }
         
         .menu-card-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .info-card .menu-card-title { color: #ff2a85; }
         .shokudo-card .menu-card-title { color: #00b4d8; }
         .event-card .menu-card-title { color: #00f5d4; }
         
+        /* テキスト入力フィールド（予約者情報用） */
+        .input-group { display: flex; flex-direction: column; gap: 6px; width: 100%; margin-bottom: 15px; }
+        .input-group:last-child { margin-bottom: 0; }
+        .input-group label { font-weight: bold; color: #94a3b8; font-size: 0.95rem; }
+        .input-group input { 
+            font-size: 1.1rem; 
+            padding: 10px; 
+            border-radius: 8px; 
+            border: 2px solid rgba(255, 42, 133, 0.2); 
+            background-color: #0a1416; 
+            color: #e2e8f0;
+            width: 100%; 
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus { border-color: #ff2a85; }
+
         /* セレクトボックス (ダーク仕様) */
         .select-grid { display: flex; gap: 20px; flex-wrap: wrap; }
         .select-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 140px; }
@@ -176,6 +197,7 @@
             text-align: center; 
         }
         .ticket-header { font-size: 1.1rem; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; margin-bottom: 15px; }
+        .ticket-name { font-size: 1.2rem; font-weight: bold; color: #e2e8f0; margin-bottom: 15px; }
         .ticket-details { font-size: 1.1rem; font-weight: bold; background: rgba(0, 180, 216, 0.15); color: #00b4d8; padding: 6px 15px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
         .ticket-number { font-size: 2.5rem; font-weight: bold; color: #ffffff; margin: 15px 0; letter-spacing: 1px; line-height: 1.3; }
         .ticket-number span { color: #00b4d8; text-shadow: 0 0 10px rgba(0, 180, 216, 0.5); }
@@ -218,16 +240,8 @@
             header h1 { font-size: 1.2rem; } 
             header nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; } 
             
-            /* スマホで画像の縦横比・縮尺を綺麗に合わせるための調整 */
-            .hero { 
-                height: 320px; /* 高さを適度に固定し、画像が引き伸ばされすぎるのを防ぎます */
-                padding: 0 15px; 
-                background-position: center center;
-            } 
-            .hero-content { 
-                padding: 15px 20px; /* 文字の入った黒ボックスを小さくして、画像の見える面積を広げます */
-                width: 100%;
-            }
+            .hero { height: 320px; padding: 0 15px; background-position: center center; } 
+            .hero-content { padding: 15px 20px; width: 100%; }
             .hero-content h2 { font-size: 1.25rem; margin-bottom: 6px; } 
             .hero-content p { font-size: 0.85rem; line-height: 1.5; }
             
@@ -295,6 +309,19 @@
                 
                 <div class="closed-message-box" id="shokudoClosedMsg" style="display: none;">
                     【食堂は満員】定員の300人に達したため、食堂の受付は終了しました。イベントの予約は可能です！
+                </div>
+
+                <!-- 予約者情報入力カード -->
+                <div class="menu-card info-card" id="infoCard">
+                    <div class="menu-card-title">👤 予約者情報</div>
+                    <div class="input-group">
+                        <label for="reserveName">お名前（ひらがな）</label>
+                        <input type="text" id="reserveName" placeholder="例：かつまたろう">
+                    </div>
+                    <div class="input-group">
+                        <label for="reservePhone">電話番号（ハイフンなし）</label>
+                        <input type="tel" id="reservePhone" placeholder="例：09012345678">
+                    </div>
                 </div>
 
                 <div class="menu-card shokudo-card" id="shokudoCard">
@@ -382,6 +409,7 @@
                     
                     <div class="ticket-container" id="shokudoTicketContainer" style="display: none;">
                         <div class="ticket-header">🍙 みんなの笑顔子ども食堂 参加整理券</div>
+                        <div class="ticket-name" id="ticketName"></div>
                         <div class="ticket-details" id="ticketDetails">大人 0名 / 子ども 0名</div>
                         <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 10px;">食堂のご予約番号</p>
                         <div class="ticket-number" id="ticketNo">No.000</div>
@@ -392,6 +420,7 @@
 
                     <div class="ticket-container event-ticket" id="eventTicketContainer" style="display: none;">
                         <div class="ticket-header">🎈 お楽しみイベント 参加整理券</div>
+                        <div class="ticket-name" id="eventTicketName"></div>
                         <div class="ticket-details" id="eventTicketDetails">大人 0名 / 子ども 0名</div>
                         <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 10px;">イベント整理番号</p>
                         <div class="ticket-number" id="eventTicketNo"><span>E-000</span></div>
@@ -448,7 +477,8 @@
             }
         }
 
-        async function updateCount(type, sAdults, sChildren, eAdults, eChildren, shokudoChange, eventChange) {
+        // 引数に name と phone を追加
+        async function updateCount(type, sAdults, sChildren, eAdults, eChildren, shokudoChange, eventChange, name, phone) {
             try {
                 const url = `${GAS_URL}?action=update`
                     + `&type=${encodeURIComponent(type)}`
@@ -457,7 +487,9 @@
                     + `&eAdults=${eAdults}`
                     + `&eChildren=${eChildren}`
                     + `&shokudoChange=${shokudoChange}`
-                    + `&eventChange=${eventChange}`;
+                    + `&eventChange=${eventChange}`
+                    + `&name=${encodeURIComponent(name || '')}`
+                    + `&phone=${encodeURIComponent(phone || '')}`;
                 const response = await fetch(url);
                 const data = await response.json();
                 return data;
@@ -532,6 +564,29 @@
         }
 
         async function issueSeparatedTicket() {
+            // 入力チェック（バリデーション）
+            const nameInput = document.getElementById('reserveName').value.trim();
+            const phoneInput = document.getElementById('reservePhone').value.trim();
+            
+            if (!nameInput) {
+                alert("お名前（ひらがな）を入力してください。");
+                return;
+            }
+            // 姓名の間のスペース等も許容する正規表現
+            if (!/^[ぁ-んー\s ]+$/.test(nameInput)) {
+                alert("お名前は「ひらがな」で入力してください。");
+                return;
+            }
+            if (!phoneInput) {
+                alert("電話番号を入力してください。");
+                return;
+            }
+            // ハイフンなしの半角数字10桁または11桁
+            if (!/^[0-9]{10,11}$/.test(phoneInput)) {
+                alert("電話番号はハイフンなしの半角数字（10桁または11桁）で入力してください。");
+                return;
+            }
+
             const sAdults = Number(document.getElementById('sAdultSelect').value);
             const sChildren = Number(document.getElementById('sChildSelect').value);
             const totalShokudo = sAdults + sChildren;
@@ -574,7 +629,8 @@
             document.getElementById('issueBtn').innerText = "処理中...";
             document.getElementById('issueBtn').disabled = true;
 
-            const newData = await updateCount("予約", sAdults, sChildren, eAdults, eChildren, totalShokudo, totalEvent);
+            // 名前と電話番号を引数に追加して送信
+            const newData = await updateCount("予約", sAdults, sChildren, eAdults, eChildren, totalShokudo, totalEvent, nameInput, phoneInput);
             
             if (newData === null) {
                 alert("予約の処理に失敗しました。");
@@ -585,7 +641,8 @@
 
             const ticketData = { 
                 sAdults: sAdults, sChildren: sChildren, startNo: startNo, endNo: endNo,
-                eAdults: eAdults, eChildren: eChildren, eventStartNo: eventStartNo, eventEndNo: eventEndNo
+                eAdults: eAdults, eChildren: eChildren, eventStartNo: eventStartNo, eventEndNo: eventEndNo,
+                name: nameInput, phone: phoneInput
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(ticketData));
             
@@ -601,6 +658,12 @@
         function showMyTicket(info) {
             document.getElementById('actionWrapper').style.display = "none";
             const ticketsDisplayArea = document.getElementById('ticketsDisplayArea');
+            
+            // お名前をチケットに表示
+            if(info.name) {
+                document.getElementById('ticketName').innerText = `${info.name} 様`;
+                document.getElementById('eventTicketName').innerText = `${info.name} 様`;
+            }
             
             const shokudoTicketContainer = document.getElementById('shokudoTicketContainer');
             if (info.startNo > 0) {
@@ -646,7 +709,8 @@
                 const shokudoChange = info.startNo > 0 ? -(info.sAdults + info.sChildren) : 0;
                 const eventChange = info.eventStartNo > 0 ? -(info.eAdults + info.eChildren) : 0;
                 
-                await updateCount("キャンセル", info.sAdults, info.sChildren, info.eAdults, info.eChildren, shokudoChange, eventChange);
+                // キャンセル時も名前・電話番号をGASへ送るように追加
+                await updateCount("キャンセル", info.sAdults, info.sChildren, info.eAdults, info.eChildren, shokudoChange, eventChange, info.name, info.phone);
             }
 
             localStorage.removeItem(STORAGE_KEY);
@@ -655,6 +719,8 @@
             document.getElementById('issueBtn').innerText = "整理券を発行する";
             document.getElementById('issueBtn').disabled = false;
             
+            document.getElementById('reserveName').value = "";
+            document.getElementById('reservePhone').value = "";
             document.getElementById('sAdultSelect').value = "1";
             document.getElementById('sChildSelect').value = "2";
             document.getElementById('eAdultSelect').value = "1";

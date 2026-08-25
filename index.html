@@ -427,7 +427,7 @@
                             ⚠️ 画面をスクリーンショットするか、メモをして受付で見せてね！
                         </div>
                     </div>
-<!--
+
                     <div class="ticket-container event-ticket" id="eventTicketContainer" style="display: none;">
                         <div class="ticket-header">🎈 お楽しみイベント 参加整理券</div>
                         <div class="ticket-name" id="eventTicketName"></div>
@@ -441,7 +441,7 @@
                 </div>
                 <button class="cancel-btn" onclick="cancelTicket()">すべての予約をキャンセルする</button>
             </div>
--->
+
         </div>
     </section>
 
@@ -697,20 +697,20 @@
                 shokudoTicketContainer.style.display = "none";
             }
 
-            //const eventTicketContainer = document.getElementById('eventTicketContainer');
-            //if (info.eventStartNo > 0) {
-                //document.getElementById('eventTicketDetails').innerText = `大人 ${info.eAdults}名 / 子ども ${info.eChildren}名`;
-                //const padEvStartNo = String(info.eventStartNo).padStart(3, '0');
-                //const padEvEndNo = String(info.eventEndNo).padStart(3, '0');
-                //if (info.eventStartNo === info.eventEndNo) {
-                //    document.getElementById('eventTicketNo').innerHTML = `<span>E-${padEvStartNo}</span>`;
-                //} else {
-                //    document.getElementById('eventTicketNo').innerHTML = `<span>E-${padEvStartNo} ～ E-${padEvEndNo}</span>`;
-                //}
-                //eventTicketContainer.style.display = "block";
-            //} else {
-              //  eventTicketContainer.style.display = "none";
-            //}
+            const eventTicketContainer = document.getElementById('eventTicketContainer');
+            if (info.eventStartNo > 0) {
+                document.getElementById('eventTicketDetails').innerText = `大人 ${info.eAdults}名 / 子ども ${info.eChildren}名`;
+                const padEvStartNo = String(info.eventStartNo).padStart(3, '0');
+                const padEvEndNo = String(info.eventEndNo).padStart(3, '0');
+                if (info.eventStartNo === info.eventEndNo) {
+                    document.getElementById('eventTicketNo').innerHTML = `<span>E-${padEvStartNo}</span>`;
+                } else {
+                    document.getElementById('eventTicketNo').innerHTML = `<span>E-${padEvStartNo} ～ E-${padEvEndNo}</span>`;
+                }
+                eventTicketContainer.style.display = "block";
+            } else {
+                eventTicketContainer.style.display = "none";
+            }
             
             ticketsDisplayArea.style.display = "block";
         }
@@ -724,7 +724,7 @@
                 const info = JSON.parse(savedTicketData);
                 
                 const shokudoChange = info.startNo > 0 ? -(info.sAdults + info.sChildren) : 0;
-                //const eventChange = info.eventStartNo > 0 ? -(info.eAdults + info.eChildren) : 0;
+                const eventChange = info.eventStartNo > 0 ? -(info.eAdults + info.eChildren) : 0;
                 
                 // キャンセル時も名前・電話番号をGASへ送るように追加
                 await updateCount("キャンセル", info.sAdults, info.sChildren, info.eAdults, info.eChildren, shokudoChange, eventChange, info.name, info.phone);
@@ -740,8 +740,8 @@
             document.getElementById('reservePhone').value = "";
             document.getElementById('sAdultSelect').value = "1";
             document.getElementById('sChildSelect').value = "2";
-            //document.getElementById('eAdultSelect').value = "1";
-            //document.getElementById('eChildSelect').value = "2";
+            document.getElementById('eAdultSelect').value = "1";
+            document.getElementById('eChildSelect').value = "2";
 
             const data = await fetchCurrentData();
             if(data !== null) updateCounterDisplay(data.count);

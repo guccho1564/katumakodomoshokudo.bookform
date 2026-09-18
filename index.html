@@ -1,8 +1,3 @@
-ご提示いただいたHTMLおよびJavaScriptコードは、`showMyTicket`関数の途中で途切れてしまっています。
-
-不足している条件分岐の終了処理、イベント用チケットの表示処理、予約キャンセルを行う`cancelTicket`関数、および初期化処理を追加し、最後まで完成させたフルコードを以下に記載します。
-
-```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -176,6 +171,7 @@
             margin-top: 10px; 
         }
         .reserve-btn:hover { background-color: #00d4ff; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 180, 216, 0.6); }
+        .reserve-btn:disabled { background-color: #334155; color: #94a3b8; box-shadow: none; cursor: not-allowed; transform: none; }
         
         /* ==========================================
            6. 整理券エリア (サイバーネオンチケット)
@@ -467,7 +463,6 @@
             }
         }
 
-        // 引数に name と phone を追加
         async function updateCount(type, sAdults, sChildren, eAdults, eChildren, shokudoChange, eventChange, name, phone) {
             try {
                 const url = `${GAS_URL}?action=update`
@@ -554,7 +549,6 @@
         }
 
         async function issueSeparatedTicket() {
-            // 入力チェック（バリデーション）
             const nameInput = document.getElementById('reserveName').value.trim();
             const phoneInput = document.getElementById('reservePhone').value.trim();
             
@@ -588,9 +582,15 @@
                 return;
             }
 
+            const issueBtn = document.getElementById('issueBtn');
+            issueBtn.innerText = "処理中...";
+            issueBtn.disabled = true;
+
             const currentData = await fetchCurrentData();
             if (currentData === null) {
                 alert("通信エラーが発生しました。もう一度お試しください。");
+                issueBtn.innerText = "整理券を発行する";
+                issueBtn.disabled = false;
                 return;
             }
 
@@ -611,25 +611,22 @@
                     alert(`申し訳ありません。現在の食堂残り枠はあと【 ${currentRemaining} 名様 】のため、ご指定の人数（${totalShokudo}名）での予約が承れません。`);
                 }
                 updateCounterDisplay(currentCount);
+                issueBtn.innerText = "整理券を発行する";
+                issueBtn.disabled = false;
                 return;
             }
 
-            document.getElementById('issueBtn').innerText = "処理中...";
-            document.getElementById('issueBtn').disabled = true;
-
-            // 名前と電話番号を引数に追加して送信
             const newData = await updateCount("予約", sAdults, sChildren, eAdults, eChildren, totalShokudo, totalEvent, nameInput, phoneInput);
             
             if (newData === null) {
                 alert("予約の処理に失敗しました。");
-                document.getElementById('issueBtn').innerText = "整理券を発行する";
-                document.getElementById('issueBtn').disabled = false;
+                issueBtn.innerText = "整理券を発行する";
+                issueBtn.disabled = false;
                 return;
             }
 
             const ticketData = { 
                 sAdults: sAdults, sChildren: sChildren, startNo: startNo, endNo: endNo,
-                eAdults: eAdults, eChildren: eChildren, eventStartNo: eventStartNo, eventEndNo: eventEndNo,
                 name: nameInput, phone: phoneInput
             };
             localStorage.setItem(STORAGE_KEY, JSON.stringify(ticketData));
@@ -647,7 +644,6 @@
             document.getElementById('actionWrapper').style.display = "none";
             const ticketsDisplayArea = document.getElementById('ticketsDisplayArea');
             
-            // お名前をチケットに表示
             if(info.name) {
                 document.getElementById('ticketName').innerText = `${info.name} 様`;
                 document.getElementById('eventTicketName').innerText = `${info.name} 様`;
@@ -669,67 +665,57 @@
             }
 
             const eventTicketContainer = document.getElementById('eventTicketContainer');
-            if (info.eventStartNo && info.eventStartNo > 0) {
+            if (info.eventStartNo > 0) {
                 document.getElementById('eventTicketDetails').innerText = `大人 ${info.eAdults}名 / 子ども ${info.eChildren}名`;
-                const padEStartNo = String(info.eventStartNo).padStart(3, '0');
-                const padEEndNo = String(info.eventEndNo).padStart(3, '0');
+                const padEvStartNo = String(info.eventStartNo).padStart(3, '0');
+                const padEvEndNo = String(info.eventEndNo).padStart(3, '0');
                 if (info.eventStartNo === info.eventEndNo) {
-                    document.getElementById('eventTicketNo').innerHTML = `<span>E-${padEStartNo}</span>`;
+                    document.getElementById('eventTicketNo').innerHTML = `<span>E-${padEvStartNo}</span>`;
                 } else {
-                    document.getElementById('eventTicketNo').innerHTML = `<span>E-${padEStartNo} ～ E-${padEEndNo}</span>`;
+                    document.getElementById('eventTicketNo').innerHTML = `<span>E-${padEvStartNo} ～ E-${padEvEndNo}</span>`;
                 }
                 eventTicketContainer.style.display = "block";
             } else {
                 eventTicketContainer.style.display = "none";
             }
-
+            
             ticketsDisplayArea.style.display = "block";
         }
 
         async function cancelTicket() {
-            if (!confirm("本当にすべての予約をキャンセルしますか？")) {
-                return;
-            }
+            const isConfirmed = confirm("本当に予約（整理券）をキャンセルしますか？");
+            if (!isConfirmed) return;
 
             const savedTicketData = localStorage.getItem(STORAGE_KEY);
-            if (!savedTicketData) return;
-
-            const info = JSON.parse(savedTicketData);
-            
-            // キャンセル時のマイナス分を計算
-            const sAdults = info.sAdults || 0;
-            const sChildren = info.sChildren || 0;
-            const cancelShokudo = -(sAdults + sChildren);
-            
-            const eAdults = info.eAdults || 0;
-            const eChildren = info.eChildren || 0;
-            const cancelEvent = -(eAdults + eChildren);
-
-            // GAS側にキャンセル（マイナス）の更新を送信
-            const newData = await updateCount(
-                "キャンセル", 
-                -sAdults, -sChildren, 
-                -eAdults, -eChildren, 
-                cancelShokudo, cancelEvent, 
-                info.name, info.phone
-            );
-            
-            if (newData === null) {
-                alert("通信エラー：キャンセルの処理に失敗しました。");
-                return;
+            if (savedTicketData) {
+                const info = JSON.parse(savedTicketData);
+                
+                const shokudoChange = info.startNo > 0 ? -(info.sAdults + info.sChildren) : 0;
+                const eventChange = info.eventStartNo > 0 ? -(info.eAdults + info.eChildren) : 0;
+                
+                await updateCount("キャンセル", info.sAdults, info.sChildren, info.eAdults, info.eChildren, shokudoChange, eventChange, info.name, info.phone);
             }
 
-            // ローカルストレージを削除してページをリロード
             localStorage.removeItem(STORAGE_KEY);
-            alert("予約をキャンセルしました。");
-            location.reload();
+            document.getElementById('ticketsDisplayArea').style.display = "none";
+            document.getElementById('actionWrapper').style.display = "block";
+            document.getElementById('issueBtn').innerText = "整理券を発行する";
+            document.getElementById('issueBtn').disabled = false;
+            
+            document.getElementById('reserveName').value = "";
+            document.getElementById('reservePhone').value = "";
+            document.getElementById('sAdultSelect').value = "1";
+            document.getElementById('sChildSelect').value = "2";
+            document.getElementById('eAdultSelect').value = "1";
+            document.getElementById('eChildSelect').value = "2";
+
+            const data = await fetchCurrentData();
+            if(data !== null) updateCounterDisplay(data.count);
+            
+            alert("予約をキャンセルしました。ご協力ありがとうございました。");
         }
 
-        // 初期化処理をページ読み込み時に実行
-        window.addEventListener('DOMContentLoaded', initPage);
-
+        initPage();
     </script>
 </body>
 </html>
-
-```
